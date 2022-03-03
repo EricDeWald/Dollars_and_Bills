@@ -32,19 +32,19 @@ const typeDefs = gql`
     type Query {
         users: [User]
         user(username: String!): User
-        budgets(username: String): [Budget]
-        budget(budgetId: ID!): Budget
-        expenses: [Expense]
-        expense: (expenseId: ID!): Expense
+        # budgets(username: String): [Budget]
+        # budget(budgetId: ID!): Budget
+        # expenses: [Expense]
+        # expense: (expenseId: ID!): Expense
     }
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addBudget(name: String!, amount: Int): Budget
-        addExpense(budgetId: ID!, name: String!, description: String!, userId: User): Expense
-        removeBudget(budgetId: ID!): Budget
-        removeExpense(expenseId: ID!): Expense
+        # addBudget(name: String!, amount: Int): Budget
+        # addExpense(budgetId: ID!, name: String!, description: String!, userId: User): Expense
+        # removeBudget(budgetId: ID!): Budget
+        # removeExpense(expenseId: ID!): Expense
     }
 `;
 
