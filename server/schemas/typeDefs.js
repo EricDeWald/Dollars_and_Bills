@@ -12,14 +12,14 @@ const typeDefs = gql`
     type Budget {
         _id: ID
         name: String
-        amount: INT
+        amount: Int
         expenses: [Expense]!
     }
 
     type Expense {
         _id: ID
         name: String
-        amount: INT
+        amount: Int
         description: String
         userId: User
     }
@@ -34,12 +34,14 @@ const typeDefs = gql`
         user(username: String!): User
         budgets(username: String): [Budget]
         budget(budgetId: ID!): Budget
+        expenses: [Expense]
+        expense: (expenseId: ID!): Expense
     }
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addBudget(name: String!, amount: INT): Budget
+        addBudget(name: String!, amount: Int): Budget
         addExpense(budgetId: ID!, name: String!, description: String!, userId: User): Expense
         removeBudget(budgetId: ID!): Budget
         removeExpense(expenseId: ID!): Expense
