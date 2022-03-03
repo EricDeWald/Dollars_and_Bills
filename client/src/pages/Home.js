@@ -1,11 +1,13 @@
 import React from "react";
 import { Stack, Button } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container'
-import BudgetCard from './components/BudgetCard';
+import BudgetCard from '../components/BudgetCard';
+import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
         <Container className='my-4'>
+            <Link to="/login">← Go to Login</Link>
             <Stack direction='horizontal' gap='3' className='mb-4'>
                 <h1 className="me-auto">Budgets</h1>
                 <Button variant='primary'>Add Budget</Button>

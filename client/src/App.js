@@ -1,22 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
-import { Stack, Button } from 'react-bootstrap'
-import Container from 'react-bootstrap/Container'
-import BudgetCard from './components/BudgetCard';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Nav from './components/Nav';
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <Container className='my-4'>
-      <Stack direction='horizontal' gap='3' className='mb-4'>
-        <h1 className="me-auto">Budgets</h1>
-        <Button variant='primary'>Add Budget</Button>
-        <Button variant='outline-primary'>Add Expense</Button>
-      </Stack>
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))', gap:'1rem', alignItems: 'flex-start' }}>
-        <BudgetCard name='Food' gray amount={100} max={300}></BudgetCard>
-      </div>
-    </Container>
-  )
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+
+          <Nav />
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+            <Route
+              path="/signup"
+              element={<Signup />}
+            />
+            <Route
+              path="*"
+              element={<Home />}
+            />
+          </Routes>
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
 }
 
 export default App;
