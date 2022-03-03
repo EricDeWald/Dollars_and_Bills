@@ -77,7 +77,7 @@ const resolvers = {
                     { _id: budgetId },
                     {
                         $addToSet: {
-                            comments: { name, amount, description },
+                            expenses: { name, amount, description },
                         },
                     },
                     {
@@ -109,7 +109,7 @@ const resolvers = {
                     { _id: expenseId },
                     {
                         $pull: {
-                            comments: {
+                            expenses: {
                                 _id: expenseId,
                             },
                         },
