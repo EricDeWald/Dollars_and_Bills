@@ -10,20 +10,20 @@ const resolvers = {
         user: async (parent, { username }) => {
             return User.findOne({ username }).populate('budgets');
         },
-        budgets: async (parent, { username }) => {
-            const params = username ? { username } : {};
-            return Budget.find(params).sort({ createdAt: -1 });
-        },
-        budget: async (parent, { budgetId }) => {
-            return Budget.findOne({ _id: budgetId });
-        },
-        expenses: async (parent, { username }) => {
-            const params = username ? { username } : {};
-            return Expense.find(params).sort({ createdAt: -1 });
-        },
-        expense: async (parent, { expenseId }) => {
-            return Expense.findOne({ _id: expenseId });
-        },
+        // budgets: async (parent, { username }) => {
+        //     const params = username ? { username } : {};
+        //     return Budget.find(params).sort({ createdAt: -1 });
+        // },
+        // budget: async (parent, { budgetId }) => {
+        //     return Budget.findOne({ _id: budgetId });
+        // },
+        // expenses: async (parent, { username }) => {
+        //     const params = username ? { username } : {};
+        //     return Expense.find(params).sort({ createdAt: -1 });
+        // },
+        // expense: async (parent, { expenseId }) => {
+        //     return Expense.findOne({ _id: expenseId });
+        // },
         // me: async (parent, args, context) => {
         //     if (context.user) {
         //         return User.findOne({ _id: context.user._id }).populate('budgets');
