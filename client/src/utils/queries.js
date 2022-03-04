@@ -10,13 +10,6 @@ export const QUERY_USER = gql`
         _id
         name
         amount
-        expenses {
-            _id
-            name
-            amount
-            description
-            userId
-        }
       }
     }
   }
