@@ -3,6 +3,7 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { Button, Navbar, Container } from 'react-bootstrap'
 
+const userName = Auth.getUsername()
 
 function Nav() {
   function showNavigation() {
@@ -15,7 +16,7 @@ function Nav() {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                Signed in as: <a href="#login">username</a>
+                Signed in as: <a href="#login">{userName}</a>
               </Navbar.Text>
               <Button variant='outline-danger'>
               <a href="/" onClick={() => Auth.logout()}>
