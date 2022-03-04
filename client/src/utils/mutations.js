@@ -29,3 +29,18 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_BUDGET = gql`
+mutation addBudget(
+$name: String!
+ $amount: Int! 
+ ) {
+  addBudget(
+    name: $name 
+    amount: $amount
+    ) {
+    name
+    amount
+  }
+}
+`;
