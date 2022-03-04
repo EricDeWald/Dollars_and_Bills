@@ -65,20 +65,16 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        addExpense: async (parent, { name, amount, description }, context) => {
+        addExpense: async (parent, { name, amount, description, budgetId }, context) => {
             if (context.user) {
-                return Budget.findOneAndUpdate(
+                const expense = await Expense.create({ name, amount, description });
+
+                await Budget.findOneAndUpdate(
                     { _id: budgetId },
-                    {
-                        $addToSet: {
-                            expenses: { name, amount, description },
-                        },
-                    },
-                    {
-                        new: true,
-                        runValidators: true,
-                    }
+                    { $addToSet: { expenses: expense._id } }
                 );
+
+                return expense;
             }
             throw new AuthenticationError('You need to be logged in!');
         },
