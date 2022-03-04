@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
+import { Form, Button, Container, } from 'react-bootstrap'
+import { FaUserPlus } from 'react-icons/fa';
 import { ADD_USER } from '../utils/mutations';
+
+
 
 function Signup(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
@@ -30,47 +34,41 @@ function Signup(props) {
     };
 
     return (
-        <div className="container my-1">
-            <Link to="/login">← Go to Login</Link>
+        <Container className='w-50 d-flex justify-content-center'>
+            <Form className='text-center w-50 d-flex flex-wrap align-items-center flex-column' onSubmit={handleFormSubmit}>
+                <Form.Text>
+                    <h1 class="text-center mb-3"><FaUserPlus /> Signup</h1>
+                </Form.Text>
 
-            <h2>Signup</h2>
-            <form onSubmit={handleFormSubmit}>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="lastName">Username:</label>
-                    <input
-                        placeholder="Username"
-                        name="username"
-                        type="username"
-                        id="username"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        placeholder="youremail@test.com"
-                        name="email"
-                        type="email"
-                        id="email"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="pwd">Password:</label>
-                    <input
-                        placeholder="******"
-                        name="password"
-                        type="password"
-                        id="pwd"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="flex-row flex-end">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
+                <Form.Group className="mb-3 w-100">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type="username" placeholder="Username" id="username" name="username" onChange={handleChange} />
+                </Form.Group>
+
+                <Form.Group className="mb-3 w-100">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" id="email" name="email" onChange={handleChange} />
+                </Form.Group>
+
+                <Form.Group className="mb-3 w-100">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" name="password" id="pwd" onChange={handleChange} />
+                </Form.Group>
+                <Button className="w-50" variant="primary" type="submit">
+                    Submit
+                </Button>
+                <Form.Text className="text-muted">
+                    <p class="lead mt-4">
+                        Have an account? <Link to="/login">← Go to Login</Link>
+                    </p>
+                </Form.Text>
+
+            </Form>
+
+        </Container >
+
     );
 }
+
 
 export default Signup;
