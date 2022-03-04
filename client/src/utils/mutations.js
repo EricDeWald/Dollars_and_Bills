@@ -6,6 +6,7 @@ export const LOGIN = gql`
       token
       user {
         _id
+        username
       }
     }
   }
@@ -28,4 +29,19 @@ export const ADD_USER = gql`
       }
     }
   }
+`;
+
+export const ADD_BUDGET = gql`
+mutation addBudget(
+$name: String!
+ $amount: Int! 
+ ) {
+  addBudget(
+    name: $name 
+    amount: $amount
+    ) {
+    name
+    amount
+  }
+}
 `;

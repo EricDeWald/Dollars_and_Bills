@@ -37,7 +37,7 @@ function Signup(props) {
         <Container className='w-50 d-flex justify-content-center'>
             <Form className='text-center w-50 d-flex flex-wrap align-items-center flex-column' onSubmit={handleFormSubmit}>
                 <Form.Text>
-                    <h1 class="text-center mb-3"><FaUserPlus /> Signup</h1>
+                    <h1 className="text-center mb-3"><FaUserPlus /> Signup</h1>
                 </Form.Text>
 
                 <Form.Group className="mb-3 w-100">
@@ -58,7 +58,7 @@ function Signup(props) {
                     Submit
                 </Button>
                 <Form.Text className="text-muted">
-                    <p class="lead mt-4">
+                    <p className="lead mt-4">
                         Have an account? <Link to="/login">← Go to Login</Link>
                     </p>
                 </Form.Text>

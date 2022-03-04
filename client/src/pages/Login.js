@@ -17,7 +17,8 @@ function Login(props) {
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
-      Auth.login(token);
+      const username = mutationResponse.data.login.user.username;
+      Auth.login(token, username);
     } catch (e) {
       console.log(e);
     }
@@ -35,7 +36,7 @@ function Login(props) {
     <Container className='w-50 d-flex justify-content-center'>
       <Form className='text-center w-50 d-flex flex-wrap align-items-center flex-column' onSubmit={handleFormSubmit}>
         <Form.Text>
-          <h1 class="text-center mb-3"><FaUser /> Login</h1>
+          <h1 className="text-center mb-3"><FaUser /> Login</h1>
         </Form.Text>
         <Form.Group className="mb-3 w-100">
           <Form.Label>Email address</Form.Label>
@@ -57,7 +58,7 @@ function Login(props) {
           Submit
         </Button>
         <Form.Text className="text-muted">
-          <p class="lead mt-4">
+          <p className="lead mt-4">
             No Account? <Link to="/signup">← Go to Signup</Link>
           </p>
         </Form.Text>
