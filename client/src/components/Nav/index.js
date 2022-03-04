@@ -1,51 +1,58 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import { Button, Navbar, Container } from 'react-bootstrap'
+
 
 function Nav() {
-
   function showNavigation() {
     if (Auth.loggedIn()) {
+      console.log(Auth)
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
+        <Navbar>
+          <Container>
+            <Navbar.Brand href="#home">Dollars and Bills</Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="justify-content-end">
+              <Navbar.Text>
+                Signed in as: <a href="#login">username</a>
+              </Navbar.Text>
+              <Button variant='outline-danger'>
+              <a href="/" onClick={() => Auth.logout()}>
+                Logout
+              </a>
+              </Button>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
+        <Navbar>
+          <Container>
+            <Navbar.Brand href="#home">Dollars and Bills</Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="justify-content-end">
+              <Button variant='outline-primary'>
+              <a href="/signup">
+                Signup
+              </a>
+              </Button>
+              <Button variant='outline-primary'>
+              <a href="/login">
+                Login
+              </a>
+              </Button>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
       );
     }
   }
 
   return (
     <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag"><p>(U+FE69)</p></span>
-          D&B
-        </Link>
-      </h1>
-
-      <nav>
-        {showNavigation()}
-      </nav>
+      {showNavigation()}
     </header>
   );
 }
