@@ -38,7 +38,7 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="shopping bag"><p>&#128181</p></span>
+          <span role="img" aria-label="shopping bag"><p>(U+FE69)</p></span>
           D&B
         </Link>
       </h1>
