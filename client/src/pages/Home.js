@@ -11,9 +11,18 @@ import Auth1 from '../utils/auth';
 const Home = () => {
     const userName = Auth1.getUsername();
     console.log(userName)
-    const { loading, data } = useQuery(QUERY_USER);
+    const { loading, data } = useQuery(QUERY_USER, { variables: { username: userName } });
+    let user;
     console.log(data)
-    const budgets = data?.budgets || [];
+
+    if (data) {
+        user = data.user;
+        console.log(user)
+    }
+
+    // const { loading, data } = useQuery(QUERY_USER);
+    // console.log(data)
+    const budgets = user?.budgets || [];
     return (
         <Container className='my-4'>
             {/* <Link to="/login">← Go to Login</Link> */}
