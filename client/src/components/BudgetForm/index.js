@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import { Modal, Button, Form } from 'react-bootstrap';
+
 
 import { ADD_BUDGET } from '../../utils/mutations';
 
 
 import Auth from '../../utils/auth';
 
+
 const BudgetForm = () => {
     const [budgetName, setBudgetName] = useState('');
     const [budgetAmount, setBudgetAmount] = useState();
+    const [onShow, setOnShow] = useState(false);
 
     const [addBudget, { error }] = useMutation(ADD_BUDGET);
 
@@ -25,7 +29,10 @@ const BudgetForm = () => {
             });
 
             setBudgetName('');
-            setBudgetAmount('')
+            setBudgetAmount('');
+            setOnShow(false)
+            window.location.reload();
+
         } catch (err) {
             console.error(err);
         }
@@ -45,53 +52,55 @@ const BudgetForm = () => {
 
         }
 
+
+
     };
 
     return (
         <div>
-            <h3>Budgets</h3>
+            <Button variant="primary" onClick={() => setOnShow(!onShow)}>
+                Add Budget
+            </Button>
+            <Button variant='outline-primary'>Add Expense</Button>
 
             {Auth.loggedIn() ? (
                 <>
-                    <form
-                        className="flex-row justify-center justify-space-between-md align-center"
-                        onSubmit={handleFormSubmit}
-                    >
-                        <div className="col-12 col-lg-9">
-                            <textarea
-                                name="name"
-                                placeholder="Name of budget"
-                                value={budgetName}
-                                className="form-input w-100"
-                                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                                onChange={handleChange}
-                            ></textarea>
+                    <Modal show={onShow} onHide={() => setOnShow(false)} role="dialog">
+                        <Form onSubmit={handleFormSubmit}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>New Budget</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <textarea
+                                    name="name"
+                                    placeholder="Name of budget"
+                                    value={budgetName}
+                                    className="form-input w-100"
+                                    style={{ lineHeight: '1.5', resize: 'vertical' }}
+                                    onChange={handleChange}
+                                ></textarea>
 
-                            <textarea
-                                name="amount"
-                                placeholder="amount of budget"
-                                value={budgetAmount}
-                                className="form-input w-100"
-                                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                                onChange={handleChange}
-                            ></textarea>
-                        </div>
+                                <textarea
+                                    name="amount"
+                                    placeholder="amount of budget"
+                                    value={budgetAmount}
+                                    className="form-input w-100"
+                                    style={{ lineHeight: '1.5', resize: 'vertical' }}
+                                    onChange={handleChange}
+                                ></textarea>
+                                <div className='d-flex justify-content-end'>
+                                    <Button variant='primary' type='submit'>Add</Button>
+                                </div>
 
-                        <div className="col-12 col-lg-3">
-                            <button className="btn btn-primary btn-block py-3" type="submit">
-                                Add Budget
-                            </button>
-                        </div>
-                        {error && (
-                            <div className="col-12 my-3 bg-danger text-white p-3">
-                                {error.message}
-                            </div>
-                        )}
-                    </form>
+                            </Modal.Body>
+
+                        </Form>
+
+                    </Modal>
                 </>
             ) : (
                 <p>
-                    You need to be logged in to share your thoughts. Please{' '}
+                    You need to be logged in see your budgets. Please{' '}
                     <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
                 </p>
             )}

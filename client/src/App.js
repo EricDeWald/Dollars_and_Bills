@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
+import { BudgetProvider } from './utils/BudgetContext';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -37,7 +38,6 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-
           <Nav />
           <Routes>
             <Route
@@ -54,11 +54,12 @@ function App() {
             />
             <Route
               path="*"
-              element={<Home />}
+              element={<Login />}
             />
           </Routes>
         </div>
       </Router>
+
     </ApolloProvider>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { v4 as uuidV4 } from 'uuid';
+// import { v4 as uuidV4 } from 'uuid';
 
 const BudgetContext = React.createContext()
-export function useBudget() {
+export function useBudgets() {
     return useContext(BudgetContext)
 }
 
@@ -14,30 +14,34 @@ export const BudgetProvider = ({ children }) => {
         return expenses.filter(expense => expense.budgetId === budgetId)
     }
 
-    function addBudget({ name, max }) {
+
+    //changed from ma to amount as the model says amount
+    function addBudget({ name, amount }) {
         setBudgets(prevBudgets => {
             if (prevBudgets.find(budget => budget.name === name)) {
                 return prevBudgets;
             }
-            return [...prevBudgets, { id: uuidV4(), name, max }]
+            return [...prevBudgets, { name, amount }]
         })
     }
 
     function addExpense({ name, amount, budgetId }) {
         setExpenses(prevExpenses => {
-            return [...prevExpenses, { id: uuidV4(), name, amount, budgetId }]
+            return [...prevExpenses, { name, amount, budgetId }]
         })
     }
 
+
+    //changed to _id as that's whats in the data
     function deleteBudget({ id }) {
         setBudgets(prevBudgets => {
-            return prevBudgets.filter(budget => budget.id !== id)
+            return prevBudgets.filter(budget => budget._id !== id)
         })
     }
 
     function deleteExpense({ id }) {
         setExpenses(prevExpenses => {
-            return prevExpenses.filter(expense => expense.id !== id)
+            return prevExpenses.filter(expense => expense._id !== id)
         })
     }
 
@@ -49,7 +53,8 @@ export const BudgetProvider = ({ children }) => {
             addBudget,
             addExpense,
             deleteBudget,
-            deleteExpense
+            deleteExpense,
+            useBudgets
         }}>
             {children}
         </BudgetContext.Provider>
