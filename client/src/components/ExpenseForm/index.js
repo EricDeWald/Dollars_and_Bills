@@ -4,34 +4,37 @@ import { useMutation } from '@apollo/client';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 
-import { ADD_BUDGET } from '../../utils/mutations';
+import { ADD_EXPENSE } from '../../utils/mutations';
 
 
 import Auth from '../../utils/auth';
 
 
-const BudgetForm = () => {
-    const [budgetName, setBudgetName] = useState('');
-    const [budgetAmount, setBudgetAmount] = useState();
-    const [onShow, setOnShow] = useState(false);
+const ExpenseForm = () => {
+    const [expenseName, setExpenseName] = useState('');
+    const [expenseAmount, setExpenseAmount] = useState();
+    const [expenseDescription, setExpenseDescription] = useState('');
+    const [onExShow, setOnExShow] = useState(false);
 
-    const [addBudget, { error }] = useMutation(ADD_BUDGET);
+    const [addExpense, { error }] = useMutation(ADD_EXPENSE);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const { data } = await addBudget({
+            const { data } = await addExpense({
                 variables: {
-                    name: budgetName,
-                    amount: budgetAmount
+                    name: expenseName,
+                    amount: expenseAmount,
+                    description: expenseDescription
                 },
             });
 
-            setBudgetName('');
-            setBudgetAmount('');
-            setOnShow(false)
-            window.location.reload();
+            setExpenseName('');
+            setExpenseAmount('');
+            setExpenseDescription('');
+            setOnExShow(false)
+            // window.location.reload();
 
         } catch (err) {
             console.error(err);
@@ -44,11 +47,15 @@ const BudgetForm = () => {
             value = parseInt(value)
 
             console.log(typeof value);
-            setBudgetAmount(value);
+            setExpenseAmount(value);
 
         }
         if (name === 'name') {
-            setBudgetName(value);
+            setExpenseName(value);
+
+        }
+        if (name === 'description') {
+            setExpenseDescription(value);
 
         }
 
@@ -58,22 +65,21 @@ const BudgetForm = () => {
 
     return (
         <div>
-            <Button variant="outline-primary" onClick={() => setOnShow(!onShow)}>
-                Add Budget
+            <Button variant="outline-primary" onClick={() => setOnExShow(!onExShow)}>
+                Add Expense
             </Button>
-
             {Auth.loggedIn() ? (
                 <>
-                    <Modal show={onShow} onHide={() => setOnShow(false)} role="dialog">
+                    <Modal show={onExShow} onHide={() => setOnExShow(false)} role="dialog">
                         <Form onSubmit={handleFormSubmit}>
                             <Modal.Header closeButton>
-                                <Modal.Title>New Budget</Modal.Title>
+                                <Modal.Title>New Expense</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 <textarea
                                     name="name"
-                                    placeholder="Name of budget"
-                                    value={budgetName}
+                                    placeholder="Name of expense"
+                                    value={expenseName}
                                     className="form-input w-100"
                                     style={{ lineHeight: '1.5', resize: 'vertical' }}
                                     onChange={handleChange}
@@ -81,12 +87,22 @@ const BudgetForm = () => {
 
                                 <textarea
                                     name="amount"
-                                    placeholder="amount of budget"
-                                    value={budgetAmount}
+                                    placeholder="amount of expense"
+                                    value={expenseAmount}
                                     className="form-input w-100"
                                     style={{ lineHeight: '1.5', resize: 'vertical' }}
                                     onChange={handleChange}
                                 ></textarea>
+
+                                <textarea
+                                    name="description"
+                                    placeholder="description of expense"
+                                    value={expenseDescription}
+                                    className="form-input w-100"
+                                    style={{ lineHeight: '1.5', resize: 'vertical' }}
+                                    onChange={handleChange}
+                                ></textarea>
+
                                 <div className='d-flex justify-content-end'>
                                     <Button variant='primary' type='submit'>Add</Button>
                                 </div>
@@ -99,7 +115,7 @@ const BudgetForm = () => {
                 </>
             ) : (
                 <p>
-                    You need to be logged in see your budgets. Please{' '}
+                    You need to be logged in see your expenses. Please{' '}
                     <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
                 </p>
             )}
@@ -107,4 +123,4 @@ const BudgetForm = () => {
     );
 };
 
-export default BudgetForm;
+export default ExpenseForm;

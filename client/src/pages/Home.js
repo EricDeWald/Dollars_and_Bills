@@ -6,6 +6,7 @@ import { QUERY_USER } from '../utils/queries';
 import { useQuery } from "@apollo/client";
 import Auth1 from '../utils/auth';
 import BudgetForm from '../components/BudgetForm'
+import ExpenseForm from "../components/ExpenseForm";
 
 const Home = () => {
     const userName = Auth1.getUsername();
@@ -25,6 +26,7 @@ const Home = () => {
             <Stack direction='horizontal' gap='3' className='mb-4'>
                 <h1 className="me-auto">Budgets</h1>
                 <BudgetForm></BudgetForm>
+                <ExpenseForm></ExpenseForm>
             </Stack>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem', alignItems: 'flex-start' }}>
                 {loading ? (

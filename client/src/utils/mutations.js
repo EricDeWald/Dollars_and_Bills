@@ -45,3 +45,21 @@ $name: String!
   }
 }
 `;
+
+export const ADD_EXPENSE = gql`
+mutation addExpense(
+$name: String!
+ $amount: Int!
+ $description: String! 
+ ) {
+  addExpense(
+    name: $name 
+    amount: $amount
+    description: $description
+    ) {
+    name
+    amount
+    description
+  }
+}
+`;
