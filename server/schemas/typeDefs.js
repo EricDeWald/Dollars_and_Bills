@@ -42,10 +42,10 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addBudget(name: String!, amount: Int): Budget
-        addExpense(budgetId: ID!, name: String!, description: String!, amount: Int!): Expense
+        addExpense( name: String!, description: String!, amount: Int!): Expense
         removeBudget(budgetId: ID!): Budget
         removeExpense(expenseId: ID!): Expense
     }
 `;
-
+//removed budgetId as required for the addExpenses mutation for testing front end
 module.exports = typeDefs;
