@@ -12,10 +12,10 @@ const resolvers = {
         },
         budgets: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Budget.find(params).sort({ createdAt: -1 });
+            return Budget.find(params).populate('expenses').sort({ createdAt: -1 });
         },
         budget: async (parent, { budgetId }) => {
-            return Budget.findOne({ _id: budgetId });
+            return Budget.findOne({ _id: budgetId }).populate('expenses');
         },
         expenses: async (parent, { username }) => {
             const params = username ? { username } : {};

@@ -26,13 +26,13 @@ const Home = () => {
             <Stack direction='horizontal' gap='3' className='mb-4'>
                 <h1 className="me-auto">Budgets</h1>
                 <BudgetForm></BudgetForm>
-                <ExpenseForm></ExpenseForm>
+                {/* <ExpenseForm></ExpenseForm> */}
             </Stack>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem', alignItems: 'flex-start' }}>
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
-                    <BudgetCard budgets={budgets} now={25} />
+                    <BudgetCard budgets={budgets} now={0} />
                 )}
             </div>
         </Container>
