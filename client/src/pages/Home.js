@@ -13,7 +13,7 @@ const Home = () => {
     console.log("localstorage", userName)
     const { loading, data } = useQuery(QUERY_USER, { variables: { username: userName } });
     let user;
-    console.log("query", data)
+    console.log("fetched user's budgets populated with expenses", data)
 
     if (data) {
         user = data.user;

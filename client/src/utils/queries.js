@@ -10,6 +10,12 @@ export const QUERY_USER = gql`
         _id
         name
         amount
+        expenses {
+          _id
+          name
+          amount
+          description
+        }
       }
     }
   }
@@ -26,7 +32,6 @@ export const QUERY_BUDGETS = gql`
             name
             amount
             description
-            userId
         }
     }
   }
@@ -43,7 +48,6 @@ export const QUERY_BUDGET = gql`
             name
             amount
             description
-            userId
         }
     }
   }

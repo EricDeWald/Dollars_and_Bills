@@ -1,4 +1,4 @@
-import { Card, ProgressBar, Stack, Button } from 'react-bootstrap';
+import { Card, ProgressBar, Stack, Button, Accordion } from 'react-bootstrap';
 import ExpenseForm from '../ExpenseForm'
 
 
@@ -40,7 +40,19 @@ export default function BudgetCard({ budgets }, now) {
                                 <Stack direction='horizontal' gap='2' className='mt-4'>
                                     {/* <Button variant='outline-primary' className='ms-auto'>Add Expense</Button> */}
                                     <ExpenseForm></ExpenseForm>
-                                    <Button variant='outline-secondary'>View Expenses</Button>
+                                    {/* <Button variant='outline-secondary'>View Expenses</Button> */}
+                                    <br/>
+                                    <Accordion>
+                                        {budget.expenses.map((expense) => 
+                                            <Accordion.Item key={expense._id} eventKey={expense._id}>
+                                                <Accordion.Header>{expense.name}</Accordion.Header>
+                                                <Accordion.Body>
+                                                    {expense.amount} - {expense.description}
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                        )
+                                        }
+                                    </Accordion>
                                 </Stack>
                             </Card.Body>
 
