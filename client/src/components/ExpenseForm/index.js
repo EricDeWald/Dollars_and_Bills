@@ -10,7 +10,7 @@ import { ADD_EXPENSE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ budgetId }) => {
     const [expenseName, setExpenseName] = useState('');
     const [expenseAmount, setExpenseAmount] = useState();
     const [expenseDescription, setExpenseDescription] = useState('');
@@ -26,7 +26,8 @@ const ExpenseForm = () => {
                 variables: {
                     name: expenseName,
                     amount: expenseAmount,
-                    description: expenseDescription
+                    description: expenseDescription,
+                    budgetId: budgetId
                 },
             });
 
@@ -34,7 +35,7 @@ const ExpenseForm = () => {
             setExpenseAmount('');
             setExpenseDescription('');
             setOnExShow(false)
-            // window.location.reload();
+            window.location.reload();
 
         } catch (err) {
             console.error(err);
@@ -48,18 +49,13 @@ const ExpenseForm = () => {
 
             console.log(typeof value);
             setExpenseAmount(value);
-
         }
         if (name === 'name') {
             setExpenseName(value);
-
         }
         if (name === 'description') {
             setExpenseDescription(value);
-
         }
-
-
 
     };
 

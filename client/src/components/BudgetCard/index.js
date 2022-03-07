@@ -37,9 +37,9 @@ export default function BudgetCard({ budgets }, now) {
                                     max={budget.amount}
                                     now={25}
                                 />
-                                <Stack direction='horizontal' gap='2' className='mt-4'>
+                                <Stack direction='vertical' gap='2' className='mt-4'>
                                     {/* <Button variant='outline-primary' className='ms-auto'>Add Expense</Button> */}
-                                    <ExpenseForm></ExpenseForm>
+                                    <ExpenseForm budgetId={budget._id}></ExpenseForm>
                                     {/* <Button variant='outline-secondary'>View Expenses</Button> */}
                                     <br/>
                                     <Accordion>
@@ -47,7 +47,7 @@ export default function BudgetCard({ budgets }, now) {
                                             <Accordion.Item key={expense._id} eventKey={expense._id}>
                                                 <Accordion.Header>{expense.name}</Accordion.Header>
                                                 <Accordion.Body>
-                                                    {expense.amount} - {expense.description}
+                                                    ${expense.amount} - {expense.description}
                                                 </Accordion.Body>
                                             </Accordion.Item>
                                         )

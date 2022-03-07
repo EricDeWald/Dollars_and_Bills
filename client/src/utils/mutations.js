@@ -48,6 +48,7 @@ $name: String!
 
 export const ADD_EXPENSE = gql`
 mutation addExpense(
+$budgetId: ID!
 $name: String!
  $amount: Int!
  $description: String! 
@@ -56,6 +57,7 @@ $name: String!
     name: $name 
     amount: $amount
     description: $description
+    budgetId: $budgetId
     ) {
     name
     amount
