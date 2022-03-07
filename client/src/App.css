@@ -44,3 +44,11 @@
 #username:hover{
   border:  var(--orange) 2px solid;
 }
+
+.budget-header{
+  color: var(--pink);
+}
+
+.budget-text {
+  color: var(--orange);
+}

@@ -11,6 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Budget from './pages/Budget';
 import Nav from './components/Nav';
 import { BudgetProvider } from './utils/BudgetContext';
 import { onError } from 'apollo-link-error';
@@ -63,6 +64,10 @@ function App() {
             <Route
               path="/signup"
               element={<Signup />}
+            />
+            <Route
+              path="/budget/:budgetId"
+              element={< Budget />}
             />
             <Route
               path="*"

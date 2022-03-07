@@ -1,8 +1,8 @@
-#navIn{
+.budget-btn{
     color: #DFA420;
     text-decoration: none;
 }
 
-#navIn:hover{
+.budget-btn:hover{
     background-color: #DF20BA;
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { Modal, Button, Form } from 'react-bootstrap';
+import './budgetForm.css'
 
 
 import { ADD_BUDGET } from '../../utils/mutations';
@@ -41,10 +42,13 @@ const BudgetForm = () => {
     const handleChange = (event) => {
         let { name, value } = event.target;
         if (name === 'amount') {
-            value = parseInt(value)
+            if ((typeof value) === "number") {
+
+                value = parseInt(value)
+                setBudgetAmount(value);
+            }
 
             console.log(typeof value);
-            setBudgetAmount(value);
 
         }
         if (name === 'name') {
@@ -58,8 +62,8 @@ const BudgetForm = () => {
 
     return (
         <div>
-            <Button variant="outline-primary" onClick={() => setOnShow(!onShow)}>
-                Add Budget
+            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} onClick={() => setOnShow(!onShow)}>
+                <div className='budget-btn'>Add Budget</div>
             </Button>
 
             {Auth.loggedIn() ? (
