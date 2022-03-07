@@ -75,8 +75,12 @@ export default function BudgetCard({ budgets }, now) {
                                     now={budget.expenses.map(item => item.amount).reduce((prev, curr) => prev + curr, 0)}
                                 />
                                 <Stack direction='vertical' gap='2' className='mt-4'>
-                                    {/* <Button variant='outline-primary' className='ms-auto'>Add Expense</Button> */}
-                                    <ExpenseForm budgetId={budget._id}></ExpenseForm>
+                                    <div className='d-flex'>
+
+                                        <Button variant='outline-primary' href={`/budget/${budget._id}`} className='ms-auto'>See Budget</Button>
+                                        {/* <Button variant='outline-primary' className='ms-auto'>Add Expense</Button> */}
+                                        <ExpenseForm budgetId={budget._id}></ExpenseForm>
+                                    </div>
                                     {/* <Button variant='outline-secondary'>View Expenses</Button> */}
                                     <br />
                                     <Accordion defaultActiveKey={['0']} alwaysOpen>
@@ -86,10 +90,10 @@ export default function BudgetCard({ budgets }, now) {
                                                 <Accordion.Body>
                                                     ${expense.amount} - {expense.description}
                                                     <div className='d-flex justify-content-end'>
-                                                        <Button 
-                                                        variant='outline-danger' 
-                                                        type='submit' 
-                                                        onClick={() => handleRemoveExpense(expense._id)}>Delete</Button>
+                                                        <Button
+                                                            variant='outline-danger'
+                                                            type='submit'
+                                                            onClick={() => handleRemoveExpense(expense._id)}>Delete</Button>
                                                     </div>
                                                 </Accordion.Body>
                                             </Accordion.Item>
