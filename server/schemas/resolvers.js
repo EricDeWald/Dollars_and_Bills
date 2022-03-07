@@ -96,16 +96,8 @@ const resolvers = {
         },
         removeExpense: async (parent, { expenseId }, context) => {
             if (context.user) {
-                return Expense.findOneAndUpdate(
+                return Expense.deleteOne(
                     { _id: expenseId },
-                    {
-                        $pull: {
-                            expenses: {
-                                _id: expenseId,
-                            },
-                        },
-                    },
-                    { new: true }
                 );
             }
             throw new AuthenticationError('You need to be logged in!');
