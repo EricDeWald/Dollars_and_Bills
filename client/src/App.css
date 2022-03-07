@@ -2,13 +2,18 @@
   background-color: black;
 } */
 #root{
-  background-color: black;
   height: 100vh;
+  background-color: black;
   --blue: #205BDF;
   --pink: #DF20BA;
   --orange: #DFA420;
   --green: #20DF45;
 }
+
+html{
+  background-color: black;
+}
+
 
 .log-form{
   background-color: rgb(32, 32, 32);
@@ -61,4 +66,11 @@
 #bigLogo{
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image1{
+  width: 400px;
+  height: 400px;
 }

@@ -15,6 +15,7 @@ import Nav from './components/Nav';
 import { BudgetProvider } from './utils/BudgetContext';
 import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
+import "./App.css";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -48,7 +49,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        <div className='app'>
           <Nav />
           <Routes>
             <Route
