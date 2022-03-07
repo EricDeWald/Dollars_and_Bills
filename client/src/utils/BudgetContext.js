@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-// import { v4 as uuidV4 } from 'uuid';
 
 const BudgetContext = React.createContext()
 export function useBudgets() {
@@ -14,8 +13,6 @@ export const BudgetProvider = ({ children }) => {
         return expenses.filter(expense => expense.budgetId === budgetId)
     }
 
-
-    //changed from ma to amount as the model says amount
     function addBudget({ name, amount }) {
         setBudgets(prevBudgets => {
             if (prevBudgets.find(budget => budget.name === name)) {
@@ -31,8 +28,6 @@ export const BudgetProvider = ({ children }) => {
         })
     }
 
-
-    //changed to _id as that's whats in the data
     function deleteBudget({ id }) {
         setBudgets(prevBudgets => {
             return prevBudgets.filter(budget => budget._id !== id)

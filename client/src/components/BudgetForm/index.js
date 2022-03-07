@@ -3,24 +3,16 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './budgetForm.css'
-
-
 import { ADD_BUDGET } from '../../utils/mutations';
-
-
 import Auth from '../../utils/auth';
-
 
 const BudgetForm = () => {
     const [budgetName, setBudgetName] = useState('');
     const [budgetAmount, setBudgetAmount] = useState();
     const [onShow, setOnShow] = useState(false);
-
     const [addBudget, { error }] = useMutation(ADD_BUDGET);
-
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
         try {
             const { data } = await addBudget({
                 variables: {
@@ -28,12 +20,10 @@ const BudgetForm = () => {
                     amount: budgetAmount
                 },
             });
-
             setBudgetName('');
             setBudgetAmount('');
             setOnShow(false)
             window.location.reload();
-
         } catch (err) {
             console.error(err);
         }
@@ -42,22 +32,12 @@ const BudgetForm = () => {
     const handleChange = (event) => {
         let { name, value } = event.target;
         if (name === 'amount') {
-            if ((typeof value) === "number") {
-
                 value = parseInt(value)
                 setBudgetAmount(value);
-            }
-
-            console.log(typeof value);
-
         }
         if (name === 'name') {
             setBudgetName(value);
-
         }
-
-
-
     };
 
     return (
@@ -94,11 +74,8 @@ const BudgetForm = () => {
                                 <div className='d-flex justify-content-end'>
                                     <Button variant='primary' type='submit'>Add</Button>
                                 </div>
-
                             </Modal.Body>
-
                         </Form>
-
                     </Modal>
                 </>
             ) : (

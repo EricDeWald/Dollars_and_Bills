@@ -67,9 +67,7 @@ function Login(props) {
           </div>
         </Form.Text>
       </Form>
-
     </Container >
-
   );
 }
 

@@ -2,25 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { Modal, Button, Form } from 'react-bootstrap';
-
-
 import { ADD_EXPENSE } from '../../utils/mutations';
-
-
 import Auth from '../../utils/auth';
-
 
 const ExpenseForm = ({ budgetId }) => {
     const [expenseName, setExpenseName] = useState('');
     const [expenseAmount, setExpenseAmount] = useState();
     const [expenseDescription, setExpenseDescription] = useState('');
     const [onExShow, setOnExShow] = useState(false);
-
     const [addExpense, { error }] = useMutation(ADD_EXPENSE);
-
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
         try {
             const { data } = await addExpense({
                 variables: {
@@ -30,13 +22,11 @@ const ExpenseForm = ({ budgetId }) => {
                     budgetId: budgetId
                 },
             });
-
             setExpenseName('');
             setExpenseAmount('');
             setExpenseDescription('');
             setOnExShow(false)
             window.location.reload();
-
         } catch (err) {
             console.error(err);
         }
@@ -46,8 +36,6 @@ const ExpenseForm = ({ budgetId }) => {
         let { name, value } = event.target;
         if (name === 'amount') {
             value = parseInt(value)
-
-            console.log(typeof value);
             setExpenseAmount(value);
         }
         if (name === 'name') {
@@ -56,7 +44,6 @@ const ExpenseForm = ({ budgetId }) => {
         if (name === 'description') {
             setExpenseDescription(value);
         }
-
     };
 
     return (
@@ -102,11 +89,8 @@ const ExpenseForm = ({ budgetId }) => {
                                 <div className='d-flex justify-content-end'>
                                     <Button variant='primary' type='submit' >Add</Button>
                                 </div>
-
                             </Modal.Body>
-
                         </Form>
-
                     </Modal>
                 </>
             ) : (

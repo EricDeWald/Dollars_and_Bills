@@ -12,14 +12,11 @@ import Auth from '../utils/auth'
 
 const Home = () => {
     const userName = Auth1.getUsername();
-    console.log("localstorage", userName)
     const { loading, data } = useQuery(QUERY_USER, { variables: { username: userName } });
     let user;
-    console.log("fetched user's budgets populated with expenses", data)
 
     if (data) {
         user = data.user;
-        console.log(user)
     }
 
     const budgets = user?.budgets || [];
@@ -31,7 +28,6 @@ const Home = () => {
                         <Stack direction='horizontal' gap='3' className='mb-4'>
                             <h1 className="me-auto budget-header">Budgets</h1>
                             <BudgetForm></BudgetForm>
-                            {/* <ExpenseForm></ExpenseForm> */}
                         </Stack>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem', alignItems: 'flex-start' }}>
                             {loading ? (
