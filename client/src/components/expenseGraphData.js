@@ -3,13 +3,14 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-export const data = {
-  // expense.map()
+// export default function expenseGraph(){}
+  // expense.map() for lable names array
+  // expense.map(amount) for data: 
+export const expenseGraphData = {
   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
     {
-      label: '# of Votes',
+      label: 'Expenses',
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
@@ -33,5 +34,5 @@ export const data = {
 };
 
 export function App() {
-  return <Doughnut data={data} />;
+  return <Doughnut data={expenseGraphData} />;
 }

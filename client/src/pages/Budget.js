@@ -10,6 +10,8 @@ import BudgetForm from '../components/BudgetForm'
 import ExpenseForm from "../components/ExpenseForm";
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth'
+import { Doughnut } from 'react-chartjs-2';
+import { expenseGraphData } from '../components/expenseGraphData';
 
 const Budget = () => {
     // Use `useParams()` to retrieve value of the route parameter `:budgetId`
@@ -42,6 +44,7 @@ const Budget = () => {
                                             <Card.Title className='d-flex justify-content-between align-items-baseline fw-normal mb-3'>
                                                 <div className='me-2'>{expense.name}</div>
                                             </Card.Title>
+                                            <Doughnut data={expenseGraphData} />
                                         </Card.Body>
 
                                     </Card>
