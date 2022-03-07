@@ -29,7 +29,7 @@ const Home = () => {
                 Auth.loggedIn() ? (
                     <Container className='my-4'>
                         <Stack direction='horizontal' gap='3' className='mb-4'>
-                            <h1 className="me-auto">Budgets</h1>
+                            <h1 className="me-auto budget-header">Budgets</h1>
                             <BudgetForm></BudgetForm>
                             {/* <ExpenseForm></ExpenseForm> */}
                         </Stack>
@@ -42,9 +42,9 @@ const Home = () => {
                         </div>
                     </Container>
                 ) : (
-                    <p>
+                    <p className="budget-text">
                         You need to be logged in see your budgets. Please{' '}
-                        <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+                        <Link to="/login" style={{ color: "#DF20BA", }}>login</Link> or <Link to="/signup" style={{ color: "#DF20BA", }}>signup.</Link>
                     </p>
                 )
             }
