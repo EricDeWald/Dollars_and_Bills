@@ -10,6 +10,7 @@ import ExpenseForm from "../components/ExpenseForm";
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth'
 
+
 const Home = () => {
     const userName = Auth1.getUsername();
     const { loading, data } = useQuery(QUERY_USER, { variables: { username: userName } });
@@ -24,7 +25,9 @@ const Home = () => {
         <>
             {
                 Auth.loggedIn() ? (
+                    
                     <Container className='my-4 background'>
+                        
                         <Stack direction='horizontal' gap='3' className='mb-4'>
                             <h1 className="me-auto budget-header">Budgets</h1>
                             <BudgetForm></BudgetForm>
