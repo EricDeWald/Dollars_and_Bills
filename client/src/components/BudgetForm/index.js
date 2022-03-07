@@ -41,10 +41,13 @@ const BudgetForm = () => {
     const handleChange = (event) => {
         let { name, value } = event.target;
         if (name === 'amount') {
-            value = parseInt(value)
+            if ((typeof value) === "number") {
+
+                value = parseInt(value)
+                setBudgetAmount(value);
+            }
 
             console.log(typeof value);
-            setBudgetAmount(value);
 
         }
         if (name === 'name') {
