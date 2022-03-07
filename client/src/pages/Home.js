@@ -24,7 +24,7 @@ const Home = () => {
         <>
             {
                 Auth.loggedIn() ? (
-                    <Container className='my-4'>
+                    <Container className='my-4 background'>
                         <Stack direction='horizontal' gap='3' className='mb-4'>
                             <h1 className="me-auto budget-header">Budgets</h1>
                             <BudgetForm></BudgetForm>
@@ -39,13 +39,13 @@ const Home = () => {
                     </Container>
                 ) : (
                     <>
-                    <p className="budget-text">
-                        You need to be logged in to see your budgets. Please{' '}
-                        <Link to="/login" style={{ color: "#DF20BA", }}> login </Link> or <Link to="/signup" style={{ color: "#DF20BA", }}> signup. </Link>
-                    </p>
-                    <p id="bigLogo">
-                        <img  src="assets/dollars_and_bills_DT.png"></img>
-                    </p>
+                        <p className="budget-text">
+                            You need to be logged in to see your budgets. Please{' '}
+                            <Link to="/login" style={{ color: "#DF20BA", }}> login </Link> or <Link to="/signup" style={{ color: "#DF20BA", }}> signup. </Link>
+                        </p>
+                        <div id="bigLogo">
+                            <img className="image1" src="assets/dollars_and_bills_DT.png"></img>
+                        </div>
                     </>
                 )
             }
