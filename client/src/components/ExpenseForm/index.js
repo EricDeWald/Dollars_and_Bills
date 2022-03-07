@@ -100,7 +100,7 @@ const ExpenseForm = ({ budgetId }) => {
                                 ></textarea>
 
                                 <div className='d-flex justify-content-end'>
-                                    <Button variant='primary' type='submit'>Add</Button>
+                                    <Button variant='primary' type='submit' >Add</Button>
                                 </div>
 
                             </Modal.Body>

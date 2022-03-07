@@ -65,3 +65,14 @@ $name: String!
   }
 }
 `;
+
+export const REMOVE_EXPENSE = gql`
+  mutation removeExpense($expenseId: ID!) {
+    removeExpense(expenseId: $expenseId) {
+      _id
+      name
+      amount
+      description
+    }
+  }
+`;
