@@ -5,6 +5,7 @@ import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Form, Button, Container, } from 'react-bootstrap'
 import { FaUser } from 'react-icons/fa';
+import "../App.css"
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -34,17 +35,17 @@ function Login(props) {
 
   return (
     <Container className='w-auto d-flex justify-content-center'>
-      <Form className='text-center w-50 d-flex flex-wrap align-items-center flex-column' onSubmit={handleFormSubmit}>
+      <Form className='text-center w-50 d-flex flex-wrap align-items-center flex-column log-form' onSubmit={handleFormSubmit}>
         <Form.Text>
-          <h1 className="text-center mb-3"><FaUser /> Login</h1>
+          <h1 className="text-center mb-3 log-header"><FaUser /> Login</h1>
         </Form.Text>
         <Form.Group className="mb-3 w-auto">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label className='log-text'>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" id="email" name="email" onChange={handleChange} />
         </Form.Group>
 
         <Form.Group className="mb-3 w-auto">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className='log-text'>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" name="password" id="pwd" onChange={handleChange} />
         </Form.Group>
         <Form.Text className="text-muted">
@@ -54,15 +55,15 @@ function Login(props) {
             </div>
           ) : null}
         </Form.Text>
-        <Button className="w-auto" variant="primary" type="submit">
+        <Button className="w-auto" id='log-button' type="submit">
           Submit
         </Button>
         <Form.Text className="text-muted">
           <div className="lead mt-2 w-auto">
-            <p className="mb-0">
+            <p className="mb-0 log-text">
               No Account?
             </p>
-            <Link to="/signup">← Go to Signup</Link>
+            <Link className="log-goto" to="/signup">← Go to Signup</Link>
           </div>
         </Form.Text>
 
