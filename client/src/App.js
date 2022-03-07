@@ -5,7 +5,6 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
@@ -43,7 +42,6 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   link: ApolloLink.from([errorLink, authLink.concat(httpLink)]),
   cache: new InMemoryCache(),
-
 });
 
 function App() {

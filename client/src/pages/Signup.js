@@ -6,12 +6,9 @@ import { Form, Button, Container, } from 'react-bootstrap'
 import { FaUserPlus } from 'react-icons/fa';
 import { ADD_USER } from '../utils/mutations';
 
-
-
 function Signup(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [addUser] = useMutation(ADD_USER);
-
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         const mutationResponse = await addUser({
@@ -65,13 +62,9 @@ function Signup(props) {
                         <Link className="log-goto" to="/login">← Go to Login</Link>
                     </div>
                 </Form.Text>
-
             </Form>
-
         </Container >
-
     );
 }
-
 
 export default Signup;

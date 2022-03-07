@@ -26,6 +26,8 @@
   "homepage": "https://github.com/EricDeWald/Dollars_and_Bills#readme",
   "dependencies": {
     "apollo-link": "^1.2.14",
-    "apollo-link-error": "^1.1.13"
+    "apollo-link-error": "^1.1.13",
+    "chart.js": "^3.7.1",
+    "react-chartjs-2": "^4.0.1"
   }
 }

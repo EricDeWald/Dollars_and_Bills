@@ -4,11 +4,7 @@ import { REMOVE_EXPENSE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 export default function BudgetCard({ budgets }, now) {
-    console.log("budgets", budgets)
-    console.log("spread", { ...budgets })
-    // let spread = { ...budgets };
     const classNames = []
-    ///currently budgets.amount will not work, needs to be looped over the spread of budgets
     if (now > budgets.amount) {
         classNames.push('bg-danger', 'bg-opacity-10')
     } else if (budgets.gray) {
@@ -18,7 +14,6 @@ export default function BudgetCard({ budgets }, now) {
     const [removeExpense, { error }] = useMutation(REMOVE_EXPENSE)
 
     const handleRemoveExpense = async (expenseId) => {
-        console.log(expenseId);
         try {
             const { data } = await removeExpense({
                 variables: { expenseId },
@@ -28,29 +23,6 @@ export default function BudgetCard({ budgets }, now) {
         }
         window.location.reload()
     }
-
-    // const [removeSkill, { error }] = useMutation(REMOVE_SKILL, {
-    //     update(cache, { data: { removeSkill } }) {
-    //         try {
-    //             cache.writeQuery({
-    //                 query: QUERY_ME,
-    //                 data: { me: removeSkill },
-    //             });
-    //         } catch (e) {
-    //             console.error(e);
-    //         }
-    //     },
-    // });
-
-    // const handleRemoveSkill = async (skill) => {
-    //     try {
-    //         const { data } = await removeSkill({
-    //             variables: { skill },
-    //         });
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // };
 
     return (
         <>
@@ -78,10 +50,8 @@ export default function BudgetCard({ budgets }, now) {
                                     <div className='d-flex'>
 
                                         <Button variant='outline-primary' href={`/budget/${budget._id}`} className='ms-auto'>See Budget</Button>
-                                        {/* <Button variant='outline-primary' className='ms-auto'>Add Expense</Button> */}
                                         <ExpenseForm budgetId={budget._id}></ExpenseForm>
                                     </div>
-                                    {/* <Button variant='outline-secondary'>View Expenses</Button> */}
                                     <br />
                                     <Accordion defaultActiveKey={['0']} alwaysOpen>
                                         {budget.expenses.map((expense) =>
@@ -102,10 +72,8 @@ export default function BudgetCard({ budgets }, now) {
                                     </Accordion>
                                 </Stack>
                             </Card.Body>
-
                         </Card>
                     ))} </div>
-
         </>
     )
 }
