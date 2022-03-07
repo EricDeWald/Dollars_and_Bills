@@ -1,6 +1,7 @@
 import { Card, ProgressBar, Stack, Button, Accordion } from 'react-bootstrap';
 import ExpenseForm from '../ExpenseForm'
-
+import { REMOVE_EXPENSE } from '../../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 export default function BudgetCard({ budgets }, now) {
     console.log("budgets", budgets)
@@ -13,7 +14,6 @@ export default function BudgetCard({ budgets }, now) {
     } else if (budgets.gray) {
         classNames.push('bg-light')
     }
-
 
     return (
         <>
@@ -41,13 +41,16 @@ export default function BudgetCard({ budgets }, now) {
                                     {/* <Button variant='outline-primary' className='ms-auto'>Add Expense</Button> */}
                                     <ExpenseForm budgetId={budget._id}></ExpenseForm>
                                     {/* <Button variant='outline-secondary'>View Expenses</Button> */}
-                                    <br/>
+                                    <br />
                                     <Accordion defaultActiveKey={['0']} alwaysOpen>
-                                        {budget.expenses.map((expense) => 
+                                        {budget.expenses.map((expense) =>
                                             <Accordion.Item key={expense._id} eventKey={expense._id}>
                                                 <Accordion.Header>{expense.name}</Accordion.Header>
                                                 <Accordion.Body>
                                                     ${expense.amount} - {expense.description}
+                                                    <div className='d-flex justify-content-end'>
+                                                        <Button variant='outline-danger' type='submit' >Delete</Button>
+                                                    </div>
                                                 </Accordion.Body>
                                             </Accordion.Item>
                                         )
