@@ -28,21 +28,24 @@
   color: white
 }
 
+#log-button:hover{
+  color: var(--pink);
+  border: solid 2px var(--pink)
+}
+
 .log-goto{
   color: var(--pink);
   text-decoration: none;
 }
-
-#email:hover{
-  border:  var(--orange) 2px solid;
+.log-goto:hover{
+  color: var(--orange);
 }
 
-#pwd:hover{
-  border:  var(--orange) 2px solid;
-}
-
+#email:hover,
+#pwd:hover,
 #username:hover{
   border:  var(--orange) 2px solid;
+  background-color: var(--pink);
 }
 
 .budget-header{
@@ -51,6 +54,11 @@
 
 .budget-text {
   color: var(--orange);
+  display: flex;
+  justify-content: center;
+}
+
+#bigLogo{
   display: flex;
   justify-content: center;
 }

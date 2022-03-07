@@ -42,10 +42,15 @@ const Home = () => {
                         </div>
                     </Container>
                 ) : (
+                    <>
                     <p className="budget-text">
-                        You need to be logged in see your budgets. Please{' '}
-                        <Link to="/login" style={{ color: "#DF20BA", }}>login</Link> or <Link to="/signup" style={{ color: "#DF20BA", }}>signup.</Link>
+                        You need to be logged in to see your budgets. Please{' '}
+                        <Link to="/login" style={{ color: "#DF20BA", }}> login </Link> or <Link to="/signup" style={{ color: "#DF20BA", }}> signup. </Link>
                     </p>
+                    <p id="bigLogo">
+                        <img  src="assets/dollars_and_bills_DT.png"></img>
+                    </p>
+                    </>
                 )
             }
         </>

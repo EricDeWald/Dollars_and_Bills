@@ -66,7 +66,6 @@ function Login(props) {
             <Link className="log-goto" to="/signup">← Go to Signup</Link>
           </div>
         </Form.Text>
-
       </Form>
 
     </Container >
