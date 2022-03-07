@@ -15,6 +15,43 @@ export default function BudgetCard({ budgets }, now) {
         classNames.push('bg-light')
     }
 
+    const [removeExpense, { error }] = useMutation(REMOVE_EXPENSE)
+
+    const handleRemoveExpense = async (expenseId) => {
+        console.log(expenseId);
+        try {
+            const { data } = await removeExpense({
+                variables: { expenseId },
+            });
+        } catch (err) {
+            console.error(err);
+        }
+        window.location.reload()
+    }
+
+    // const [removeSkill, { error }] = useMutation(REMOVE_SKILL, {
+    //     update(cache, { data: { removeSkill } }) {
+    //         try {
+    //             cache.writeQuery({
+    //                 query: QUERY_ME,
+    //                 data: { me: removeSkill },
+    //             });
+    //         } catch (e) {
+    //             console.error(e);
+    //         }
+    //     },
+    // });
+
+    // const handleRemoveSkill = async (skill) => {
+    //     try {
+    //         const { data } = await removeSkill({
+    //             variables: { skill },
+    //         });
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // };
+
     return (
         <>
             <div>
@@ -49,7 +86,10 @@ export default function BudgetCard({ budgets }, now) {
                                                 <Accordion.Body>
                                                     ${expense.amount} - {expense.description}
                                                     <div className='d-flex justify-content-end'>
-                                                        <Button variant='outline-danger' type='submit' >Delete</Button>
+                                                        <Button 
+                                                        variant='outline-danger' 
+                                                        type='submit' 
+                                                        onClick={() => handleRemoveExpense(expense._id)}>Delete</Button>
                                                     </div>
                                                 </Accordion.Body>
                                             </Accordion.Item>
