@@ -33,17 +33,17 @@ function Login(props) {
   };
 
   return (
-    <Container className='w-50 d-flex justify-content-center'>
+    <Container className='w-auto d-flex justify-content-center'>
       <Form className='text-center w-50 d-flex flex-wrap align-items-center flex-column' onSubmit={handleFormSubmit}>
         <Form.Text>
           <h1 className="text-center mb-3"><FaUser /> Login</h1>
         </Form.Text>
-        <Form.Group className="mb-3 w-100">
+        <Form.Group className="mb-3 w-auto">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" id="email" name="email" onChange={handleChange} />
         </Form.Group>
 
-        <Form.Group className="mb-3 w-100">
+        <Form.Group className="mb-3 w-auto">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" name="password" id="pwd" onChange={handleChange} />
         </Form.Group>
@@ -54,13 +54,16 @@ function Login(props) {
             </div>
           ) : null}
         </Form.Text>
-        <Button className="w-50" variant="primary" type="submit">
+        <Button className="w-auto" variant="primary" type="submit">
           Submit
         </Button>
         <Form.Text className="text-muted">
-          <p className="lead mt-4">
-            No Account? <Link to="/signup">← Go to Signup</Link>
-          </p>
+          <div className="lead mt-2 w-auto">
+            <p className="mb-0">
+              No Account?
+            </p>
+            <Link to="/signup">← Go to Signup</Link>
+          </div>
         </Form.Text>
 
       </Form>
