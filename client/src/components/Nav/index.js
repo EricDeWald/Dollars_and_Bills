@@ -2,7 +2,7 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { Button, Navbar, Container } from 'react-bootstrap'
-import styles from './nav.css'
+import './nav.css'
 
 const userName = Auth.getUsername()
 
@@ -13,14 +13,14 @@ function Nav() {
       return (
         <Navbar >
           <Container>
-            <Navbar.Brand className={styles.navtext} href="#home">Dollars and Bills</Navbar.Brand>
+            <Navbar.Brand style={{ color: "#DFA420" }} href="#home">Dollars and Bills</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text className={styles.navtext}>
-                Signed in as: <a href="#login">{userName}</a>
+              <Navbar.Text style={{ color: "#DF20BA" }}>
+                Signed in as: <a href="#login" id="navIn">{userName}</a>
               </Navbar.Text>
-              <Button variant='outline-danger'>
-              <a href="/" onClick={() => Auth.logout()}>
+              <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}>
+              <a href="/" id="navIn" onClick={() => Auth.logout()}>
                 Logout
               </a>
               </Button>
@@ -32,16 +32,16 @@ function Nav() {
       return (
         <Navbar>
           <Container>
-            <Navbar.Brand href="#home">Dollars and Bills</Navbar.Brand>
+            <Navbar.Brand style={{ color: "#DFA420" }} href="#home">Dollars and Bills</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-              <Button variant='outline-primary'>
-              <a href="/signup">
+              <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}>
+              <a href="/signup" id="navIn">
                 Signup
               </a>
               </Button>
-              <Button variant='outline-primary'>
-              <a href="/login">
+              <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}>
+              <a href="/login" id="navIn">
                 Login
               </a>
               </Button>
