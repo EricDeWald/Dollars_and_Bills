@@ -1,4 +1,5 @@
-import { Card, ProgressBar, Stack, Button } from 'react-bootstrap';
+import { Card, ProgressBar, Stack, Button, Accordion } from 'react-bootstrap';
+import ExpenseForm from '../ExpenseForm'
 
 
 export default function BudgetCard({ budgets }, now) {
@@ -23,7 +24,7 @@ export default function BudgetCard({ budgets }, now) {
                             <Card.Body>
                                 <Card.Title className='d-flex justify-content-between align-items-baseline fw-normal mb-3'>
                                     <div className='me-2'>{budget.name}</div>
-                                    <div className='d-flex align-items-baseline'>${25}
+                                    <div className='d-flex align-items-baseline'>${budget.expenses.map(item => item.amount).reduce((prev, curr) => prev + curr, 0)}
                                         <span className='text-muted fs-6 ms-1'>
                                             / ${budget.amount}
                                         </span>
@@ -34,11 +35,24 @@ export default function BudgetCard({ budgets }, now) {
                                     variant={progressBarColor(budget.amount, budget.max)}
                                     min={0}
                                     max={budget.amount}
-                                    now={25}
+                                    now={budget.expenses.map(item => item.amount).reduce((prev, curr) => prev + curr, 0)}
                                 />
-                                <Stack direction='horizontal' gap='2' className='mt-4'>
-                                    <Button variant='outline-primary' className='ms-auto'>Add Expense</Button>
-                                    <Button variant='outline-secondary'>View Expenses</Button>
+                                <Stack direction='vertical' gap='2' className='mt-4'>
+                                    {/* <Button variant='outline-primary' className='ms-auto'>Add Expense</Button> */}
+                                    <ExpenseForm budgetId={budget._id}></ExpenseForm>
+                                    {/* <Button variant='outline-secondary'>View Expenses</Button> */}
+                                    <br/>
+                                    <Accordion defaultActiveKey={['0']} alwaysOpen>
+                                        {budget.expenses.map((expense) => 
+                                            <Accordion.Item key={expense._id} eventKey={expense._id}>
+                                                <Accordion.Header>{expense.name}</Accordion.Header>
+                                                <Accordion.Body>
+                                                    ${expense.amount} - {expense.description}
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                        )
+                                        }
+                                    </Accordion>
                                 </Stack>
                             </Card.Body>
 
