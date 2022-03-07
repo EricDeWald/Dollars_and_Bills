@@ -13,7 +13,7 @@ function Nav() {
       return (
         <Navbar >
           <Container>
-            <Navbar.Brand style={{ color: "#DFA420", fontSize: "44px" }} href="#home">Dollars and Bills</Navbar.Brand>
+            <Navbar.Brand style={{ color: "#DFA420", fontSize: "44px" }} href="#home">Dollars <span className="navSpan">and</span> Bills</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text style={{ color: "#DF20BA" }}>
