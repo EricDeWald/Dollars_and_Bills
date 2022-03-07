@@ -1,38 +1,46 @@
-.App {
-  text-align: center;
+/* .App{
+  background-color: black;
+} */
+#root{
+  background-color: black;
+  height: 100vh;
+  --blue: #205BDF;
+  --pink: #DF20BA;
+  --orange: #DFA420;
+  --green: #20DF45;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.log-form{
+  background-color: rgb(32, 32, 32);
+  border-radius: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.log-header{
+  color: var(--orange)
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.log-text {
+  color: var(--pink);
 }
 
-.App-link {
-  color: #61dafb;
+#log-button{
+  background-color: var(--orange);
+  color: white
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.log-goto{
+  color: var(--pink);
+  text-decoration: none;
+}
+
+#email:hover{
+  border:  var(--orange) 2px solid;
+}
+
+#pwd:hover{
+  border:  var(--orange) 2px solid;
+}
+
+#username:hover{
+  border:  var(--orange) 2px solid;
 }

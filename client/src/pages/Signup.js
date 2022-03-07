@@ -35,34 +35,34 @@ function Signup(props) {
 
     return (
         <Container className='w-auto d-flex justify-content-center'>
-            <Form className='text-center w-50 d-flex flex-wrap align-items-center flex-column' onSubmit={handleFormSubmit}>
+            <Form className='text-center w-50 d-flex flex-wrap align-items-center flex-column log-form' onSubmit={handleFormSubmit}>
                 <Form.Text>
-                    <h1 className="text-center mb-3"><FaUserPlus /> Signup</h1>
+                    <h1 className="text-center mb-3 log-header"><FaUserPlus /> Signup</h1>
                 </Form.Text>
 
                 <Form.Group className="mb-3 w-auto">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label className='log-text'>Username</Form.Label>
                     <Form.Control type="username" placeholder="Username" id="username" name="username" onChange={handleChange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3 w-auto">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label className='log-text'>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" id="email" name="email" onChange={handleChange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3 w-auto">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label className='log-text'>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" name="password" id="pwd" onChange={handleChange} />
                 </Form.Group>
-                <Button className="w-auto" variant="primary" type="submit">
+                <Button className="w-auto" id='log-button' type="submit">
                     Submit
                 </Button>
                 <Form.Text className="text-muted">
                     <div className="lead mt-2 w-auto">
-                        <p className='mb-0'>
+                        <p className='mb-0 log-text'>
                             Have an account?
                         </p>
-                        <Link to="/login">← Go to Login</Link>
+                        <Link className="log-goto" to="/login">← Go to Login</Link>
                     </div>
                 </Form.Text>
 

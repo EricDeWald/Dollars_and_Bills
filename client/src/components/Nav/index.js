@@ -2,6 +2,7 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { Button, Navbar, Container } from 'react-bootstrap'
+import styles from './nav.css'
 
 const userName = Auth.getUsername()
 
@@ -10,12 +11,12 @@ function Nav() {
     if (Auth.loggedIn()) {
       console.log(Auth)
       return (
-        <Navbar>
+        <Navbar >
           <Container>
-            <Navbar.Brand href="#home">Dollars and Bills</Navbar.Brand>
+            <Navbar.Brand className={styles.navtext} href="#home">Dollars and Bills</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text>
+              <Navbar.Text className={styles.navtext}>
                 Signed in as: <a href="#login">{userName}</a>
               </Navbar.Text>
               <Button variant='outline-danger'>
