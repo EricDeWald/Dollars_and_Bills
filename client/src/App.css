@@ -3,7 +3,7 @@
 } */
 #root{
   background-color: black;
-  height: 100vh;
+  height: 100%;
   --blue: #205BDF;
   --pink: #DF20BA;
   --orange: #DFA420;
