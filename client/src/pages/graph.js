@@ -6,8 +6,6 @@ import { useQuery } from "@apollo/client";
 import { ChartData }  from "./GetExpense";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-const arr =ChartData.expenseLabels
-const numbers= ChartData.expenseAmounts
 const lableArr =ChartData.expenseLabels
 const graphNumbers= ChartData.expenseAmounts
 
