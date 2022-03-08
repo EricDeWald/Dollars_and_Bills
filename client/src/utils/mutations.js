@@ -77,3 +77,11 @@ export const REMOVE_EXPENSE = gql`
     }
   }
 `;
+
+export const REMOVE_BUDGET = gql`
+mutation removeBudget($budgetId: ID!) {
+  removeBudget(budgetId: $budgetId) {
+    _id
+    name
+  }
+}`
