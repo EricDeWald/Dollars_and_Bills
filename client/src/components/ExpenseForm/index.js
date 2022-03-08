@@ -55,10 +55,10 @@ const ExpenseForm = ({ budgetId }) => {
                 <>
                     <Modal show={onExShow} onHide={() => setOnExShow(false)} role="dialog">
                         <Form onSubmit={handleFormSubmit}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>New Expense</Modal.Title>
+                            <Modal.Header style={{backgroundColor: "#DFA420", border: "solid 2px #DF20BA"}} closeButton>
+                                <Modal.Title style={{color: "#DF20BA"}}>New Expense</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>
+                            <Modal.Body style={{backgroundColor: "black", border: "solid 2px #DF20BA", borderRadius:"5px"}}>
                                 <textarea
                                     name="name"
                                     placeholder="Name of expense"
@@ -87,7 +87,9 @@ const ExpenseForm = ({ budgetId }) => {
                                 ></textarea>
 
                                 <div className='d-flex justify-content-end'>
-                                    <Button variant='primary' type='submit' >Add</Button>
+                                    <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} type='submit' >
+                                        <div className='budget-btn'>Add</div>
+                                    </Button>
                                 </div>
                             </Modal.Body>
                         </Form>
