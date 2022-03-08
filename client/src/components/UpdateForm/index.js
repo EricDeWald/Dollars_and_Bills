@@ -61,10 +61,10 @@ const UpdateForm = ({ expenseId }) => {
                 <>
                     <Modal show={onUpShow} onHide={() => setOnUpShow(false)} role="dialog">
                         <Form onSubmit={handleFormSubmit}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>Update Expense</Modal.Title>
+                            <Modal.Header style={{backgroundColor: "#DFA420", border: "solid 2px #DF20BA"}} closeButton>
+                                <Modal.Title style={{color: "#DF20BA"}}>Update Expense</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>
+                            <Modal.Body style={{backgroundColor: "black", border: "solid 2px #DF20BA", borderRadius:"5px"}}>
                                 <textarea
                                     name="name"
                                     placeholder="Name of expense"
@@ -93,7 +93,9 @@ const UpdateForm = ({ expenseId }) => {
                                 ></textarea>
 
                                 <div className='d-flex justify-content-end'>
-                                    <Button variant='primary' type='submit' >Update</Button>
+                                    <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} type='submit' >
+                                        <div className='budget-btn'>Update</div>
+                                    </Button>
                                 </div>
                             </Modal.Body>
                         </Form>
