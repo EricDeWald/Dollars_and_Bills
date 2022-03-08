@@ -14,7 +14,6 @@ html{
   background-color: black;
 }
 
-
 .log-form{
   background-color: rgb(32, 32, 32);
   border-radius: 10px;
@@ -76,7 +75,7 @@ html{
 }
 .card-body{
   background-color: black;
-  color: var(--orange);
+  color: var(--pink);
   border: var(--orange) solid 5px;
   border-radius: 5px;
 }

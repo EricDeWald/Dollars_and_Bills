@@ -35,7 +35,7 @@ export default function BudgetCard({ budgets }, now) {
             console.error(err);
         }
         window.location.reload()
-    }
+    } 
 
     return (
         <>
@@ -54,14 +54,13 @@ export default function BudgetCard({ budgets }, now) {
                                 </Card.Title>
                                 <ProgressBar
                                     className='rounded-pill'
-                                    variant={progressBarColor(budget.amount, budget.max)}
+                                    variant={'warning'}
                                     min={0}
                                     max={budget.amount}
                                     now={budget.expenses.map(item => item.amount).reduce((prev, curr) => prev + curr, 0)}
                                 />
                                 <Stack direction='vertical' gap='2' className='mt-4'>
                                     <div className='d-flex'>
-
                                         <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} href={`/budget/${budget._id}`} className='ms-auto'>
                                             <div className='budget-btn'>See Budget</div>
                                         </Button>
@@ -77,11 +76,6 @@ export default function BudgetCard({ budgets }, now) {
                                                     ${expense.amount} - {expense.description}
                                                     <div className='d-flex justify-content-end'>
                                                         <UpdateForm expenseId={expense._id}></UpdateForm>
-                                                        {/* <Button
-                                                            style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}
-                                                            type='submit'
-                                                            onClick={() => handleUpdateExpense(expense._id)}><div className='budget-btn'>Update</div>
-                                                        </Button> */}
                                                         <Button
                                                             style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}
                                                             type='submit'
@@ -100,15 +94,4 @@ export default function BudgetCard({ budgets }, now) {
                     ))} </div>
         </>
     )
-}
-
-function progressBarColor(amount, max) {
-    const budgetProgress = amount / max;
-    if (budgetProgress < 0.4) {
-        return 'primary'
-    } else if (budgetProgress < 0.8) {
-        return 'warning'
-    } else {
-        return 'danger'
-    }
 }
