@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth'
 import { REMOVE_BUDGET } from '../utils/mutations';
-
+import { ExpensesGraph } from "./graph";
 
 const Budget = () => {
 
@@ -60,6 +60,7 @@ const Budget = () => {
                                         </Card.Body>
                                     </Card>
                                 ))} </div>
+                                <ExpensesGraph/>
                     </Container>
                 ) : (
                     <p>
