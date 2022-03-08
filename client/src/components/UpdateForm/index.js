@@ -19,6 +19,7 @@ const UpdateForm = ({ expenseId }) => {
                     name: expenseName,
                     amount: expenseAmount,
                     description: expenseDescription,
+                    expenseId: expenseId
                 },
             });
             setExpenseName('');
