@@ -1,14 +1,8 @@
 import React from 'react'
-import { Stack, Card } from 'react-bootstrap'
-import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button';
-import BudgetCard from '../components/BudgetCard';
+import { Stack, Card, Button, Container } from 'react-bootstrap'
 import { QUERY_BUDGET } from '../utils/queries';
 import { useQuery, useMutation } from "@apollo/client";
 import { useParams } from 'react-router-dom'
-import Auth1 from '../utils/auth';
-import BudgetForm from '../components/BudgetForm'
-import ExpenseForm from "../components/ExpenseForm";
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth'
 import { REMOVE_BUDGET } from '../utils/mutations';
