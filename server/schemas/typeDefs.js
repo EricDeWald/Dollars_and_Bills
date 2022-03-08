@@ -47,5 +47,4 @@ const typeDefs = gql`
         removeExpense(expenseId: ID!): Expense
     }
 `;
-//removed budgetId as required for the addExpenses mutation for testing front end
 module.exports = typeDefs;
