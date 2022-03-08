@@ -47,7 +47,6 @@ const Budget = () => {
                         </Container>
                 ) : (
                     <p>
-                        You need to be logged in see your budgets. Please{' '}
                         You need to be logged in to see your budgets. Please{' '}
                         <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
                     </p>
