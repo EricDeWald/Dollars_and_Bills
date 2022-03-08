@@ -74,3 +74,40 @@ html{
   width: 400px;
   height: 400px;
 }
+.card-body{
+  background-color: black;
+  color: var(--orange);
+  border: var(--orange) solid 5px;
+  border-radius: 5px;
+}
+
+.me-2{
+  font-weight: bold;
+  font-size: 24px;
+}
+
+#expense-items{
+  border: var(--pink) 2px solid;
+  border-radius: 5px;
+  background-color: black;
+}
+
+.accordion-collapse{
+  background-color: black;
+}
+.accordion-body{
+  color: var(--orange);
+}
+
+.accordion{
+  background-color: black;
+}
+
+.accordion-button{
+  color: var(--orange);
+}
+
+.ms-1{
+  color: var(--pink);
+}
+

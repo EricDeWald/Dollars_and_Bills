@@ -49,21 +49,24 @@ export default function BudgetCard({ budgets }, now) {
                                 <Stack direction='vertical' gap='2' className='mt-4'>
                                     <div className='d-flex'>
 
-                                        <Button variant='outline-primary' href={`/budget/${budget._id}`} className='ms-auto'>See Budget</Button>
+                                        <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} href={`/budget/${budget._id}`} className='ms-auto'>
+                                        <div className='budget-btn'>See Budget</div>
+                                            
+                                        </Button>
                                         <ExpenseForm budgetId={budget._id}></ExpenseForm>
                                     </div>
                                     <br />
                                     <Accordion defaultActiveKey={['0']} alwaysOpen>
                                         {budget.expenses.map((expense) =>
-                                            <Accordion.Item key={expense._id} eventKey={expense._id}>
-                                                <Accordion.Header>{expense.name}</Accordion.Header>
-                                                <Accordion.Body>
+                                            <Accordion.Item id="expense-items" key={expense._id} eventKey={expense._id}>
+                                                <Accordion.Header id="expense-Bg">{expense.name}</Accordion.Header>
+                                                <Accordion.Body >
                                                     ${expense.amount} - {expense.description}
                                                     <div className='d-flex justify-content-end'>
                                                         <Button
-                                                            variant='outline-danger'
+                                                            style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}
                                                             type='submit'
-                                                            onClick={() => handleRemoveExpense(expense._id)}>Delete</Button>
+                                                            onClick={() => handleRemoveExpense(expense._id)}><div className='budget-btn'>Delete</div></Button>
                                                     </div>
                                                 </Accordion.Body>
                                             </Accordion.Item>

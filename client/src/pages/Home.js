@@ -29,11 +29,13 @@ const Home = () => {
                             <h1 className="me-auto budget-header">Budgets</h1>
                             <BudgetForm></BudgetForm>
                         </Stack>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem', alignItems: 'flex-start' }}>
+                        <div style={{ display: 'grid', gridTemplateRows: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem', }}>
                             {loading ? (
                                 <div>Loading...</div>
                             ) : (
-                                <BudgetCard budgets={budgets} now={0} />
+                                <div className="budgetCard">
+                                    <BudgetCard style={{ color: "#DF20BA"}} budgets={budgets} now={0} />
+                                </div>
                             )}
                         </div>
                     </Container>
