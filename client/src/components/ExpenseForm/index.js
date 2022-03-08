@@ -48,8 +48,8 @@ const ExpenseForm = ({ budgetId }) => {
 
     return (
         <div>
-            <Button variant="outline-primary" onClick={() => setOnExShow(!onExShow)}>
-                Add Expense
+            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} onClick={() => setOnExShow(!onExShow)}>
+            <div className='budget-btn'>Add Expense</div>
             </Button>
             {Auth.loggedIn() ? (
                 <>

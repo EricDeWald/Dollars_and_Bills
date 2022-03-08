@@ -26,6 +26,7 @@ export const ADD_USER = gql`
       token
       user {
         _id
+        username
       }
     }
   }
@@ -76,3 +77,11 @@ export const REMOVE_EXPENSE = gql`
     }
   }
 `;
+
+export const REMOVE_BUDGET = gql`
+mutation removeBudget($budgetId: ID!) {
+  removeBudget(budgetId: $budgetId) {
+    _id
+    name
+  }
+}`
