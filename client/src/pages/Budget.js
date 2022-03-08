@@ -28,23 +28,29 @@ const Budget = () => {
         <>
             {
                 Auth.loggedIn() ? (
-                        <Container className='my-4'>
-                            <Stack direction='horizontal' gap='3' className='mb-4'>
-                                <h1 className="me-auto">{budget.name}</h1>
-                            </Stack>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem', alignItems: 'flex-start' }}>
-                                {budget &&
-                                    budget.expenses.map((expense) => (
-                                        <Card key={expense._id}>
-                                            <Card.Body>
-                                                <Card.Title className='d-flex justify-content-between align-items-baseline fw-normal mb-3'>
-                                                    <div className='me-2'>{expense.name}</div>
-                                                </Card.Title>
-                                            </Card.Body>
-                                        </Card>
-                                    ))} </div>
-                                    <ExpensesGraph/>
-                        </Container>
+                    <Container className='my-4'>
+                        <Stack direction='horizontal' gap='3' className='mb-4'>
+                            <h1 className="me-auto">{budget.name}</h1>
+                            <div className='d-flex justify-content-end'>
+                                <Button
+                                    id="log-button"
+                                    variant='outline-danger'
+                                    type='submit'
+                                    onClick={() => handleRemoveBudget(budget._id)}>Delete budget</Button>
+                            </div>
+                        </Stack>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 2fr))', gap: '2rem', alignItems: 'flex-start', justifyContent: "space-around" }}>
+                            {budget &&
+                                budget.expenses.map((expense) => (
+                                    <Card className='me-2' key={expense._id}>
+                                        <Card.Body>
+                                            <Card.Title className='d-flex justify-content-between align-items-baseline fw-normal mb-3'>
+                                                <div className='me-2'>{expense.name}</div>
+                                            </Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                ))} </div>
+                    </Container>
                 ) : (
                     <p>
                         You need to be logged in to see your budgets. Please{' '}

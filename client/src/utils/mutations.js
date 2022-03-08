@@ -85,3 +85,22 @@ mutation removeBudget($budgetId: ID!) {
     name
   }
 }`
+
+export const UPDATE_EXPENSE = gql`
+mutation updateExpense(
+  $name: String!
+   $amount: Int!
+   $description: String!
+    $expenseId: ID!
+   ) {
+    updateExpense(
+      name: $name
+      amount: $amount
+      description: $description
+      expenseId: $expenseId
+      ) {
+      name
+      amount
+      description
+    }
+  }`
