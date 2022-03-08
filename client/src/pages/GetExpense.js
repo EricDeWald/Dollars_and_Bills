@@ -28,6 +28,7 @@ export const ChartData = () => {
             expenseAmounts.push(budget.expenses[i].amount)
         }
         console.log(expenseLabels,expenseAmounts)
+        // return {expenseLabels, expenseAmounts}  
     }
     if (loading) {
         return <div>Loading...</div>;
