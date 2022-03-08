@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import { ChartData }  from "./GetExpense";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-// ChartData()
+// ChartData() this crashes site
 console.log(ChartData.expenseLabels)
 const labelArr =ChartData.expenseLabels
 const graphNumbers= ChartData.expenseAmounts
@@ -39,5 +39,5 @@ export const graphData = {
 };
 
 export function ExpensesGraph() {
-  return <Doughnut data={graphData} />;
+  return <Doughnut options= {{width:"200px", height:"200px"}} data={graphData} />;
 }
