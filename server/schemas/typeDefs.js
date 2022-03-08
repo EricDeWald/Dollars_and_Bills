@@ -45,6 +45,9 @@ const typeDefs = gql`
         addExpense(budgetId: ID!, name: String!, description: String!, amount: Int!): Expense
         removeBudget(budgetId: ID!): Budget
         removeExpense(expenseId: ID!): Expense
+        updateExpense(expenseId: ID!, name: String!, description: String!, amount: Int!): Expense
+        
     }
 `;
 module.exports = typeDefs;
+
