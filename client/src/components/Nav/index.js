@@ -3,6 +3,7 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { Button, Navbar, Container } from 'react-bootstrap'
 import './nav.css'
+import DbLogo from '../../assets/dollars_and_bills_DT.png'
 
 const userName = Auth.getUsername()
 
@@ -14,7 +15,7 @@ function Nav() {
         <Navbar >
           <Container>
               <img className="navImg"
-                src="assets/dollars_and_bills_DT.png"
+                src={DbLogo}
                 width="80px"
                 height="80px"
               />
@@ -39,7 +40,7 @@ function Nav() {
         <Navbar>
           <Container>
           <img className="navImg"
-                src="assets/dollars_and_bills_DT.png"
+                src={DbLogo}
                 width="80px"
                 height="80px"
           />
