@@ -8,11 +8,15 @@ import { ChartData }  from "./GetExpense";
 ChartJS.register(ArcElement, Tooltip, Legend);
 const arr =ChartData.expenseLabels
 const numbers= ChartData.expenseAmounts
+const lableArr =ChartData.expenseLabels
+const graphNumbers= ChartData.expenseAmounts
 
 export const graphData = {
+  labels: lableArr,
   datasets: [
     {
       label: '# of Expenses',
+      data: graphNumbers,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
