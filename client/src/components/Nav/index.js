@@ -14,12 +14,12 @@ function Nav() {
       return (
         <Navbar >
           <Container>
-              <img className="navImg"
-                src={DbLogo}
-                width="80px"
-                height="80px"
-              />
-            <Navbar.Brand style={{ color: "#DFA420", fontSize: "48px", fontWeight: "bold" }} href="#home">Dollars <span className="navSpan">and</span> Bills
+            <img className="navImg"
+              src={DbLogo}
+              width="80px"
+              height="80px"
+            />
+            <Navbar.Brand style={{ color: "#DFA420", fontSize: "48px", fontWeight: "bold" }} href="/">Dollars <span className="navSpan">and</span> Bills
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
@@ -39,12 +39,12 @@ function Nav() {
       return (
         <Navbar>
           <Container>
-          <img className="navImg"
-                src={DbLogo}
-                width="80px"
-                height="80px"
-          />
-            <Navbar.Brand style={{ color: "#DFA420", fontSize: "44px", fontWeight: "bold"}} href="/">Dollars <span className="navSpan">and</span> Bills</Navbar.Brand>
+            <img className="navImg"
+              src={DbLogo}
+              width="80px"
+              height="80px"
+            />
+            <Navbar.Brand style={{ color: "#DFA420", fontSize: "44px", fontWeight: "bold" }} href="/">Dollars <span className="navSpan">and</span> Bills</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}>
