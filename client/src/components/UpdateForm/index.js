@@ -48,8 +48,8 @@ const UpdateForm = ({ expenseId }) => {
 
     return (
         <div>
-            <Button variant="outline-primary" onClick={() => setOnUpShow(!onUpShow)}>
-                Update Expense
+            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} onClick={() => setOnUpShow(!onUpShow)}>
+            <div className='budget-btn'>Update Expense</div>
             </Button>
             {Auth.loggedIn() ? (
                 <>
