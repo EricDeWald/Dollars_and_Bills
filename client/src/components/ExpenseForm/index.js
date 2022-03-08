@@ -17,7 +17,7 @@ const ExpenseForm = ({ budgetId }) => {
             const { data } = await addExpense({
                 variables: {
                     name: expenseName,
-                    amount: expenseAmount,
+                    amount: parseInt(expenseAmount),
                     description: expenseDescription,
                     budgetId: budgetId
                 },
@@ -28,6 +28,7 @@ const ExpenseForm = ({ budgetId }) => {
             setOnExShow(false)
             window.location.reload();
         } catch (err) {
+            setExpenseAmount("Needs to be a number")
             console.error(err);
         }
     };
@@ -35,7 +36,6 @@ const ExpenseForm = ({ budgetId }) => {
     const handleChange = (event) => {
         let { name, value } = event.target;
         if (name === 'amount') {
-            value = parseInt(value)
             setExpenseAmount(value);
         }
         if (name === 'name') {
@@ -48,17 +48,17 @@ const ExpenseForm = ({ budgetId }) => {
 
     return (
         <div>
-            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} onClick={() => setOnExShow(!onExShow)}>
-            <div className='budget-btn'>Add Expense</div>
+            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} onClick={() => setOnExShow(!onExShow)}>
+                <div className='budget-btn'>Add Expense</div>
             </Button>
             {Auth.loggedIn() ? (
                 <>
                     <Modal show={onExShow} onHide={() => setOnExShow(false)} role="dialog">
                         <Form onSubmit={handleFormSubmit}>
-                            <Modal.Header style={{backgroundColor: "#DFA420", border: "solid 2px #DF20BA"}} closeButton>
-                                <Modal.Title style={{color: "#DF20BA"}}>New Expense</Modal.Title>
+                            <Modal.Header style={{ backgroundColor: "#DFA420", border: "solid 2px #DF20BA" }} closeButton>
+                                <Modal.Title style={{ color: "#DF20BA" }}>New Expense</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body style={{backgroundColor: "black", border: "solid 2px #DF20BA", borderRadius:"5px"}}>
+                            <Modal.Body style={{ backgroundColor: "black", border: "solid 2px #DF20BA", borderRadius: "5px" }}>
                                 <textarea
                                     name="name"
                                     placeholder="Name of expense"
@@ -87,7 +87,7 @@ const ExpenseForm = ({ budgetId }) => {
                                 ></textarea>
 
                                 <div className='d-flex justify-content-end'>
-                                    <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} type='submit' >
+                                    <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} type='submit' >
                                         <div className='budget-btn'>Add</div>
                                     </Button>
                                 </div>
