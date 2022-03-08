@@ -48,18 +48,18 @@ const BudgetForm = () => {
 
             {Auth.loggedIn() ? (
                 <>
-                    <Modal show={onShow} onHide={() => setOnShow(false)} role="dialog">
+                    <Modal  show={onShow} onHide={() => setOnShow(false)} role="dialog">
                         <Form onSubmit={handleFormSubmit}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>New Budget</Modal.Title>
+                            <Modal.Header style={{backgroundColor: "#DFA420", border: "solid 2px #DF20BA"}} closeButton>
+                                <Modal.Title style={{color: "#DF20BA"}}>New Budget</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>
+                            <Modal.Body style={{backgroundColor: "black", border: "solid 2px #DF20BA", borderRadius:"5px"}}>
                                 <textarea
                                     name="name"
                                     placeholder="Name of budget"
                                     value={budgetName}
                                     className="form-input w-100"
-                                    style={{ lineHeight: '1.5', resize: 'vertical' }}
+                                    style={{ lineHeight: '1.5', resize: 'vertical'}}
                                     onChange={handleChange}
                                 ></textarea>
 
@@ -72,7 +72,9 @@ const BudgetForm = () => {
                                     onChange={handleChange}
                                 ></textarea>
                                 <div className='d-flex justify-content-end'>
-                                    <Button variant='primary' type='submit'>Add</Button>
+                                    <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} type='submit'>
+                                        <div className='budget-btn'>Add</div>
+                                    </Button>
                                 </div>
                             </Modal.Body>
                         </Form>
