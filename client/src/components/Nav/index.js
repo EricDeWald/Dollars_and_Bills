@@ -3,6 +3,7 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { Button, Navbar, Container } from 'react-bootstrap'
 import './nav.css'
+import DbLogo from '../../assets/dollars_and_bills_DT.png'
 
 const userName = Auth.getUsername()
 
@@ -14,7 +15,7 @@ function Nav() {
         <Navbar >
           <Container>
               <img className="navImg"
-                src="assets/dollars_and_bills_DT.png"
+                src={DbLogo}
                 width="80px"
                 height="80px"
               />
@@ -25,10 +26,10 @@ function Nav() {
               <Navbar.Text style={{ color: "#DF20BA" }}>
                 Signed in as: <a href="#login" id="navIn">{userName}</a>
               </Navbar.Text>
-              <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}>
-              <a href="/" id="navIn" onClick={() => Auth.logout()}>
-                Logout
-              </a>
+              <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}>
+                <a href="/" id="navIn" onClick={() => Auth.logout()}>
+                  Logout
+                </a>
               </Button>
             </Navbar.Collapse>
           </Container>
@@ -39,22 +40,22 @@ function Nav() {
         <Navbar>
           <Container>
           <img className="navImg"
-                src="assets/dollars_and_bills_DT.png"
+                src={DbLogo}
                 width="80px"
                 height="80px"
           />
-            <Navbar.Brand style={{ color: "#DFA420", fontSize: "44px", fontWeight: "bold"}} href="#home">Dollars <span className="navSpan">and</span> Bills</Navbar.Brand>
+            <Navbar.Brand style={{ color: "#DFA420", fontSize: "44px", fontWeight: "bold"}} href="/">Dollars <span className="navSpan">and</span> Bills</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-              <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}>
-              <a href="/signup" id="navIn">
-                Signup
-              </a>
+              <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}>
+                <a href="/signup" id="navIn">
+                  Signup
+                </a>
               </Button>
-              <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}>
-              <a href="/login" id="navIn">
-                Login
-              </a>
+              <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}>
+                <a href="/login" id="navIn">
+                  Login
+                </a>
               </Button>
             </Navbar.Collapse>
           </Container>

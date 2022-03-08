@@ -17,7 +17,7 @@ const UpdateForm = ({ expenseId }) => {
             const { data } = await updateExpense({
                 variables: {
                     name: expenseName,
-                    amount: expenseAmount,
+                    amount: parseInt(expenseAmount),
                     description: expenseDescription,
                     expenseId: expenseId
                 },
@@ -28,16 +28,22 @@ const UpdateForm = ({ expenseId }) => {
             setOnUpShow(false)
             window.location.reload();
         } catch (err) {
+            setExpenseAmount("Needs to be a number")
             console.error(err);
         }
     };
 
+
     const handleChange = (event) => {
         let { name, value } = event.target;
+
+
+
         if (name === 'amount') {
-            value = parseInt(value)
-            setExpenseAmount(value);
+            setExpenseAmount(value)
+
         }
+
         if (name === 'name') {
             setExpenseName(value);
         }
@@ -48,8 +54,8 @@ const UpdateForm = ({ expenseId }) => {
 
     return (
         <div>
-            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} onClick={() => setOnUpShow(!onUpShow)}>
-            <div className='budget-btn'>Update Expense</div>
+            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} onClick={() => setOnUpShow(!onUpShow)}>
+                <div className='budget-btn'>Update Expense</div>
             </Button>
             {Auth.loggedIn() ? (
                 <>
