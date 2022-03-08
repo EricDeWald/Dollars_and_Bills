@@ -1,6 +1,7 @@
 import { Card, ProgressBar, Stack, Button, Accordion } from 'react-bootstrap';
 import ExpenseForm from '../ExpenseForm'
-import { REMOVE_EXPENSE } from '../../utils/mutations';
+import UpdateForm from '../UpdateForm'
+import { REMOVE_EXPENSE, UPDATE_EXPENSE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 export default function BudgetCard({ budgets }, now) {
@@ -12,10 +13,22 @@ export default function BudgetCard({ budgets }, now) {
     }
 
     const [removeExpense, { error }] = useMutation(REMOVE_EXPENSE)
+    const updateExpense = useMutation(UPDATE_EXPENSE)
 
     const handleRemoveExpense = async (expenseId) => {
         try {
             const { data } = await removeExpense({
+                variables: { expenseId },
+            });
+        } catch (err) {
+            console.error(err);
+        }
+        window.location.reload()
+    }
+
+    const handleUpdateExpense = async (expenseId) => {
+        try {
+            const { data } = await updateExpense({
                 variables: { expenseId },
             });
         } catch (err) {
@@ -49,11 +62,11 @@ export default function BudgetCard({ budgets }, now) {
                                 <Stack direction='vertical' gap='2' className='mt-4'>
                                     <div className='d-flex'>
 
-                                        <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} href={`/budget/${budget._id}`} className='ms-auto'>
-                                        <div className='budget-btn'>See Budget</div>
-                                            
+                                        <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} href={`/budget/${budget._id}`} className='ms-auto'>
+                                            <div className='budget-btn'>See Budget</div>
                                         </Button>
                                         <ExpenseForm budgetId={budget._id}></ExpenseForm>
+                                        
                                     </div>
                                     <br />
                                     <Accordion defaultActiveKey={['0']} alwaysOpen>
@@ -63,10 +76,18 @@ export default function BudgetCard({ budgets }, now) {
                                                 <Accordion.Body >
                                                     ${expense.amount} - {expense.description}
                                                     <div className='d-flex justify-content-end'>
-                                                        <Button
-                                                            style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}
+                                                        <UpdateForm expenseId={expense._id}></UpdateForm>
+                                                        {/* <Button
+                                                            style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}
                                                             type='submit'
-                                                            onClick={() => handleRemoveExpense(expense._id)}><div className='budget-btn'>Delete</div></Button>
+                                                            onClick={() => handleUpdateExpense(expense._id)}><div className='budget-btn'>Update</div>
+                                                        </Button> */}
+                                                        <Button
+                                                            style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}
+                                                            type='submit'
+                                                            onClick={() => handleRemoveExpense(expense._id)}><div className='budget-btn'>Delete</div>
+                                                        </Button>
+                                                        
                                                     </div>
                                                 </Accordion.Body>
                                             </Accordion.Item>
