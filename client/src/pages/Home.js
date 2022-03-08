@@ -34,9 +34,11 @@ const Home = () => {
                                 <div>Loading...</div>
                             ) : (
                                 <div className="budgetCard">
-                                    <BudgetCard style={{ color: "#DF20BA"}} budgets={budgets} now={0} />
+                                    <BudgetCard style={{ color: "#DF20BA" }} budgets={budgets} now={0} />
                                 </div>
                             )}
+                        </div>
+                        <div className='d-flex align-items-baseline' style={{ color: "#DF20BA", fontSize: "36px"}}>Budgets Total: ${budgets.map(budget => budget.amount).reduce((prev, curr) => prev + curr, 0)}
                         </div>
                     </Container>
                 ) : (
