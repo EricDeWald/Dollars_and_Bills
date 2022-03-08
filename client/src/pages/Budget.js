@@ -38,13 +38,15 @@ const Budget = () => {
 
                     <Container className='my-4'>
                         <Stack direction='horizontal' gap='3' className='mb-4'>
-                            <h1 className="me-auto">{budget.name}</h1>
+                            <h1 className="me-auto log-text">{budget.name}</h1>
                             <div className='d-flex justify-content-end'>
                                 <Button
                                     id="log-button"
-                                    variant='outline-danger'
+                                    style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}
                                     type='submit'
-                                    onClick={() => handleRemoveBudget(budget._id)}>Delete budget</Button>
+                                    onClick={() => handleRemoveBudget(budget._id)}>
+                                        <div className='budget-btn'>Delete Budget</div>
+                                </Button>
                             </div>
                         </Stack>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 2fr))', gap: '2rem', alignItems: 'flex-start', justifyContent: "space-around" }}>
