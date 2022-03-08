@@ -32,8 +32,8 @@ const BudgetForm = () => {
     const handleChange = (event) => {
         let { name, value } = event.target;
         if (name === 'amount') {
-                value = parseInt(value)
-                setBudgetAmount(value);
+            value = parseInt(value)
+            setBudgetAmount(value);
         }
         if (name === 'name') {
             setBudgetName(value);
@@ -42,7 +42,7 @@ const BudgetForm = () => {
 
     return (
         <div>
-            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}} onClick={() => setOnShow(!onShow)}>
+            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} onClick={() => setOnShow(!onShow)}>
                 <div className='budget-btn'>Add Budget</div>
             </Button>
 
