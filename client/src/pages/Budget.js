@@ -13,28 +13,12 @@ import Auth from '../utils/auth'
 import { ExpensesGraph } from "./graph";
 
 
+
 const Budget = () => {
     const { budgetId } = useParams();
     const { loading, data } = useQuery(QUERY_BUDGET, {
         variables: { budgetId: budgetId },
     });
-
-    const expenseLables = []
-    const expenseAmounts = []
-    
-
-const expenseData = useQuery(QUERY_EXPENSES)
-console.log(expenseData)
-if (expenseData.data) {
-    const expense = expenseData.data.expenses;
-    
-    for (let i=0;i<expense.length;i++){
-        
-        expenseLables.push(expense[i].name)
-        expenseAmounts.push(expense[i].amount)
-    }
-    console.log(expenseLables,expenseAmounts)
-}
 
     const budget = data?.budget || {};
     if (loading) {
@@ -44,7 +28,6 @@ if (expenseData.data) {
         <>
             {
                 Auth.loggedIn() ? (
-                        
                         <Container className='my-4'>
                             <Stack direction='horizontal' gap='3' className='mb-4'>
                                 <h1 className="me-auto">{budget.name}</h1>
@@ -57,10 +40,10 @@ if (expenseData.data) {
                                                 <Card.Title className='d-flex justify-content-between align-items-baseline fw-normal mb-3'>
                                                     <div className='me-2'>{expense.name}</div>
                                                 </Card.Title>
-                                                <ExpensesGraph/>
                                             </Card.Body>
                                         </Card>
                                     ))} </div>
+                                    <ExpensesGraph/>
                         </Container>
                 ) : (
                     <p>

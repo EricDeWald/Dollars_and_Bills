@@ -3,17 +3,18 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { QUERY_EXPENSES } from '../utils/queries';
 import { useQuery } from "@apollo/client";
+import { ChartData }  from "./GetExpense";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
- 
+const arr =ChartData.expenseLabels
+const numbers= ChartData.expenseAmounts
 
 export const graphData = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: arr,
   datasets: [
     {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: '# of Expenses',
+      data: numbers,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
