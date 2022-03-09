@@ -42,10 +42,10 @@ const Budget = () => {
                             <div className='d-flex justify-content-end'>
                                 <Button
                                     id="log-button"
-                                    style={{ border: "solid #DF20BA 2px", backgroundColor: "black"}}
+                                    style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}
                                     type='submit'
                                     onClick={() => handleRemoveBudget(budget._id)}>
-                                        <div className='budget-btn'>Delete Budget</div>
+                                    <div className='budget-btn'>Delete Budget</div>
                                 </Button>
                             </div>
                         </Stack>
@@ -54,13 +54,13 @@ const Budget = () => {
                                 budget.expenses.map((expense) => (
                                     <Card className='me-2' key={expense._id}>
                                         <Card.Body>
-                                            <Card.Title className='d-flex justify-content-between align-items-baseline fw-normal mb-3'>
-                                                <div className='me-2'>{expense.name}</div>
+                                            <Card.Title className='d-flex justify-content-center align-items-baseline fw-normal mb-3'>
+                                                <div className='me-2 d-flex'>{expense.name} - ${expense.amount}</div>
                                             </Card.Title>
                                         </Card.Body>
                                     </Card>
                                 ))} </div>
-                                <ExpensesGraph/>
+                        <ExpensesGraph props={budget} />
                     </Container>
                 ) : (
                     <p>
