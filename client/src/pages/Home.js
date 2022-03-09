@@ -6,7 +6,6 @@ import { QUERY_USER } from '../utils/queries';
 import { useQuery } from "@apollo/client";
 import Auth1 from '../utils/auth';
 import BudgetForm from '../components/BudgetForm'
-import ExpenseForm from "../components/ExpenseForm";
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth'
 
@@ -38,7 +37,7 @@ const Home = () => {
                                 </div>
                             )}
                         </div>
-                        <div className='d-flex align-items-baseline' style={{ color: "#DF20BA", fontSize: "36px"}}>Budgets Total: ${budgets.map(budget => budget.amount).reduce((prev, curr) => prev + curr, 0)}
+                        <div className='d-flex align-items-baseline' style={{ color: "#DF20BA", fontSize: "36px" }}>Budgets Total: ${budgets.map(budget => budget.amount).reduce((prev, curr) => prev + curr, 0)}
                         </div>
                     </Container>
                 ) : (
