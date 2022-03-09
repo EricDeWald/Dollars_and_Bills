@@ -60,7 +60,7 @@ const Budget = () => {
                                         </Card.Body>
                                     </Card>
                                 ))} </div>
-                        <ExpensesGraph props={budget} />
+                                <ExpensesGraph props={budget} />
                     </Container>
                 ) : (
                     <p>
