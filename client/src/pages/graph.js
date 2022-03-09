@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-
+import "../App.css" 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function ExpensesGraph(props) {
@@ -39,7 +39,7 @@ export function ExpensesGraph(props) {
     };
 
 
-    return <Doughnut data={graphData} />
+    return (<div className='graph'><Doughnut data={graphData} /></div>)
 
   } else {
 
@@ -79,6 +79,6 @@ export function ExpensesGraph(props) {
     };
 
 
-    return <Doughnut data={graphData} />;
+    return (<div className='graph'><Doughnut data={graphData} /></div>);
   }
 }
