@@ -23,7 +23,7 @@ This application:
   
   - [Usage](#usage)
   - [Installation](#installation)
-  - [Gifs](#gifs)
+  - [Gif](#gif)
   - [Screenshots](#screenshots)
   - [License](#license)
   - [Technologies](#technologies)
@@ -47,10 +47,11 @@ Use this app to keep track of all of your Dollars and Bills!
 This project is currently deployed on Heroku and does not need to be downloaded.
 
   ---
+  
+  ## GIF
+  
+![Dollars And Bills](https://user-images.githubusercontent.com/94136164/157484353-7328a664-761d-4d2d-8581-aa5387c4f211.gif)
 
-  ## GIFS
-
-![GIF](./ "GIF of page")
 
   ---
 
@@ -58,14 +59,14 @@ This project is currently deployed on Heroku and does not need to be downloaded.
 
 Here are some screen shots of this application.
 
-<img src="./public/assets/" alt="Screenshot of the homepage after logging in" width="700"/>
 
+![main](https://user-images.githubusercontent.com/94136164/157483991-d80112a9-f6c6-4925-b608-976759cec337.png)
 
+![login](https://user-images.githubusercontent.com/94136164/157484033-abffbf6f-9cf7-4b05-a79c-f574b0166224.png)
 
+![budgets](https://user-images.githubusercontent.com/94136164/157484115-ee85521e-c106-404a-8256-7f5a04d81fce.png)
 
-
-
-    
+![expenses](https://user-images.githubusercontent.com/94136164/157484175-50870f15-d3ce-439a-885a-175e72dfefda.png)
 
   ---
 
