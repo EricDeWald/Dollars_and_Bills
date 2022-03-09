@@ -7,6 +7,7 @@ import { ADD_BUDGET } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const BudgetForm = () => {
+    const [hoverAddBudget, setHoverAddBudget]=React.useState(false)
     const [budgetName, setBudgetName] = useState('');
     const [budgetAmount, setBudgetAmount] = useState();
     const [onShow, setOnShow] = useState(false);
@@ -42,7 +43,7 @@ const BudgetForm = () => {
 
     return (
         <div>
-            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} onClick={() => setOnShow(!onShow)}>
+            <Button onMouseEnter={()=>setHoverAddBudget(true)} onMouseLeave={()=>setHoverAddBudget(false)} style={ hoverAddBudget ? { border: "solid #DF20BA 2px", backgroundColor: "#DF20BA", color:"black" }:{ border: "solid #DF20BA 2px", backgroundColor: "black", color: "#DFA420"}} onClick={() => setOnShow(!onShow)}>
                 <div className='budget-btn'>Add Budget</div>
             </Button>
 

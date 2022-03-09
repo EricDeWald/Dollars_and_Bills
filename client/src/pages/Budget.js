@@ -64,8 +64,9 @@ const Budget = () => {
                     </Container>
                 ) : (
                     <p>
-                        You need to be logged in see your budgets. Please{' '}
-                        <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+                         You need to be logged in see your budgets. Please 
+                        &nbsp;<Link to="/login"style={{ color: "#DF20BA", }}>login</Link>&nbsp;or&nbsp;
+                        <Link to="/signup" style={{ color: "#DF20BA", }}>signup.</Link>
                     </p>
                 )
             }
