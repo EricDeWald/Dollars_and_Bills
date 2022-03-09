@@ -11,7 +11,6 @@ export function ExpensesGraph(props) {
     name = ["Total budget"]
     amount = [props.props.amount]
 
-
     const graphData = {
       labels: name,
       datasets: [
