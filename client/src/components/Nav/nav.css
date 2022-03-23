@@ -15,3 +15,23 @@
 .navImg{
     float: left;
 }
+
+#nav-title{
+    color: #DFA420;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    #nav-title {
+        font-size: 20px;
+    }
+
+    #sign-in{
+        font-size: 10px;
+    }
+
+    #logout-btn{
+        font-size: 10px;
+    }
+}
