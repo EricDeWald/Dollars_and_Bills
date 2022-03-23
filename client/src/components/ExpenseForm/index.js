@@ -28,6 +28,9 @@ const ExpenseForm = ({ budgetId }) => {
             setExpenseName('');
             setExpenseAmount('');
             setExpenseDescription('');
+            setNameError('');
+            setAmountError('');
+            setDescriptionError('');
             setOnExShow(false)
             window.location.reload();
         } catch (err) {
