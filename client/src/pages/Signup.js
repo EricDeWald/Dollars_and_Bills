@@ -9,18 +9,38 @@ import { ADD_USER } from '../utils/mutations';
 function Signup(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [addUser] = useMutation(ADD_USER);
+    const [usernameError, setUsernameError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        const mutationResponse = await addUser({
-            variables: {
-                email: formState.email,
-                password: formState.password,
-                username: formState.username
-            },
-        });
-        const token = mutationResponse.data.addUser.token;
-        const username = mutationResponse.data.addUser.user.username;
-        Auth.login(token, username);
+        try {
+            const mutationResponse = await addUser({
+                variables: {
+                    email: formState.email,
+                    password: formState.password,
+                    username: formState.username
+                },
+            });
+            const token = mutationResponse.data.addUser.token;
+            const username = mutationResponse.data.addUser.user.username;
+            setUsernameError('');
+            setEmailError('');
+            setPasswordError('');
+            Auth.login(token, username);
+        } catch (err) {
+            if (!formState.username) {
+                setUsernameError('Unique username is required!')
+            }
+            if (!formState.email) {
+                setEmailError('Unique email is required!')
+            }
+            if (!formState.password) {
+                setPasswordError('Password is required!')
+            } else if (!formState.password.length < 8) {
+                setPasswordError('Password must be at least 8 characters in length!')
+            }
+        }
     };
 
     const handleChange = (event) => {
@@ -42,16 +62,20 @@ function Signup(props) {
                     <Form.Label className='log-text'>Username</Form.Label>
                     <Form.Control type="username" placeholder="Username" id="username" name="username" onChange={handleChange} />
                 </Form.Group>
+                <p style={{ color: "#DFA420" }}>{usernameError}</p>
 
                 <Form.Group className="mb-3 w-auto">
                     <Form.Label className='log-text'>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" id="email" name="email" onChange={handleChange} />
                 </Form.Group>
+                <p style={{ color: "#DFA420" }}>{emailError}</p>
 
                 <Form.Group className="mb-3 w-auto">
                     <Form.Label className='log-text'>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" name="password" id="pwd" onChange={handleChange} />
                 </Form.Group>
+                <p style={{ color: "#DFA420" }}>{passwordError}</p>
+
                 <Button className="w-auto" id='log-button' type="submit">
                     Submit
                 </Button>
