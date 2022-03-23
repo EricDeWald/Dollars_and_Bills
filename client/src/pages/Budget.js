@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import Auth from '../utils/auth'
 import { REMOVE_BUDGET } from '../utils/mutations';
 import { ExpensesGraph } from "./graph";
+import ExpenseForm from "../components/ExpenseForm"
+import UpdateForm from '../components/UpdateForm';
 
 const Budget = () => {
 
@@ -40,6 +42,7 @@ const Budget = () => {
                         <Stack direction='horizontal' gap='3' className='mb-4'>
                             <h1 className="me-auto log-text">{budget.name}</h1>
                             <div className='d-flex justify-content-end'>
+                                <ExpenseForm budgetId={budgetId}></ExpenseForm>
                                 <Button
                                     id="log-button"
                                     style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }}
@@ -57,15 +60,16 @@ const Budget = () => {
                                             <Card.Title className='d-flex justify-content-center align-items-baseline fw-normal mb-3'>
                                                 <div className='me-2 d-flex'>{expense.name} - ${expense.amount}</div>
                                             </Card.Title>
+                                            <UpdateForm expenseId={expense._id}></UpdateForm>
                                         </Card.Body>
                                     </Card>
                                 ))} </div>
-                                <ExpensesGraph props={budget} />
+                        <ExpensesGraph budget={budget} />
                     </Container>
                 ) : (
                     <p>
-                         You need to be logged in see your budgets. Please 
-                        &nbsp;<Link to="/login"style={{ color: "#DF20BA", }}>login</Link>&nbsp;or&nbsp;
+                        You need to be logged in see your budgets. Please
+                        &nbsp;<Link to="/login" style={{ color: "#DF20BA", }}>login</Link>&nbsp;or&nbsp;
                         <Link to="/signup" style={{ color: "#DF20BA", }}>signup.</Link>
                     </p>
                 )

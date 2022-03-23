@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
-import { Form, Button, Container, } from 'react-bootstrap'
+import { Form, Button, Container, Alert, } from 'react-bootstrap'
 import { FaUserPlus } from 'react-icons/fa';
+import { FaEye } from 'react-icons/fa'
 import { ADD_USER } from '../utils/mutations';
 
 function Signup(props) {
-    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [formState, setFormState] = useState({ email: '', password: '', password2: '' });
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePassword = () => setShowPassword(!showPassword);
+
     const [addUser] = useMutation(ADD_USER);
     const [usernameError, setUsernameError] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -72,7 +76,13 @@ function Signup(props) {
 
                 <Form.Group className="mb-3 w-auto">
                     <Form.Label className='log-text'>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name="password" id="pwd" onChange={handleChange} />
+                    <Form.Control type={showPassword ? "text" : "password"} placeholder="Password" name="password" id="pwd" onChange={handleChange} />
+                </Form.Group>
+
+                <Form.Group className="mb-3 w-auto">
+                    <Form.Label className='log-text'>Verify Password</Form.Label>
+                    <Form.Control type={showPassword ? "text" : "password"} placeholder="Verify Password" name="password2" id="pwd2" onChange={handleChange} />
+                    <FaEye style={{ color: "white" }} onClick={togglePassword}>Show Password</FaEye>
                 </Form.Group>
                 <p style={{ color: "#DFA420" }}>{passwordError}</p>
 
