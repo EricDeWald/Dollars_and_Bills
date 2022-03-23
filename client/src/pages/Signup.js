@@ -42,6 +42,7 @@ function Signup(props) {
             setUsernameError('');
             setEmailError('');
             setPasswordError('');
+            setVerifyPassError('');
             if (!formState.username) {
                 setUsernameError('Unique username is required!')
             }
