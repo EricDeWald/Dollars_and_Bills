@@ -32,6 +32,7 @@ const BudgetForm = () => {
             setBudgetName('');
             setBudgetAmount('');
             setNameError('');
+            setAmountError('');
             setOnShow(false)
             window.location.reload();
         } catch (err) {

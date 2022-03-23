@@ -29,6 +29,9 @@ function Signup(props) {
             setPasswordError('');
             Auth.login(token, username);
         } catch (err) {
+            setUsernameError('');
+            setEmailError('');
+            setPasswordError('');
             if (!formState.username) {
                 setUsernameError('Unique username is required!')
             }

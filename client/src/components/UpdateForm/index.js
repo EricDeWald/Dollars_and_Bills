@@ -28,6 +28,9 @@ const UpdateForm = ({ expenseId }) => {
             setExpenseName('');
             setExpenseAmount('');
             setExpenseDescription('');
+            setNameError('');
+            setAmountError('');
+            setDescriptionError('');
             setOnUpShow(false)
             window.location.reload();
         } catch (err) {
