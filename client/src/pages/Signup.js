@@ -2,25 +2,36 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
-import { Form, Button, Container, } from 'react-bootstrap'
+import { Form, Button, Container, Alert, } from 'react-bootstrap'
 import { FaUserPlus } from 'react-icons/fa';
+import { FaEye } from 'react-icons/fa'
 import { ADD_USER } from '../utils/mutations';
 
 function Signup(props) {
-    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [formState, setFormState] = useState({ email: '', password: '', password2: '' });
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePassword = () => setShowPassword(!showPassword);
+
     const [addUser] = useMutation(ADD_USER);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        const mutationResponse = await addUser({
-            variables: {
-                email: formState.email,
-                password: formState.password,
-                username: formState.username
-            },
-        });
-        const token = mutationResponse.data.addUser.token;
-        const username = mutationResponse.data.addUser.user.username;
-        Auth.login(token, username);
+        if (formState.password === formState.password2) {
+            console.log("same same")
+            const mutationResponse = await addUser({
+                variables: {
+                    email: formState.email,
+                    password: formState.password,
+                    username: formState.username
+                },
+            });
+
+            const token = mutationResponse.data.addUser.token;
+            const username = mutationResponse.data.addUser.user.username;
+            Auth.login(token, username);
+        } else {
+            // <Alert variant='warning'>passwords need to match</Alert>
+            alert("passwords need to match")
+        }
     };
 
     const handleChange = (event) => {
@@ -50,7 +61,13 @@ function Signup(props) {
 
                 <Form.Group className="mb-3 w-auto">
                     <Form.Label className='log-text'>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name="password" id="pwd" onChange={handleChange} />
+                    <Form.Control type={showPassword ? "text" : "password"} placeholder="Password" name="password" id="pwd" onChange={handleChange} />
+                </Form.Group>
+
+                <Form.Group className="mb-3 w-auto">
+                    <Form.Label className='log-text'>Verify Password</Form.Label>
+                    <Form.Control type={showPassword ? "text" : "password"} placeholder="Verify Password" name="password2" id="pwd2" onChange={handleChange} />
+                    <FaEye style={{ color: "white" }} onClick={togglePassword}>Show Password</FaEye>
                 </Form.Group>
                 <Button className="w-auto" id='log-button' type="submit">
                     Submit
