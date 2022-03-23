@@ -27,14 +27,14 @@ function Nav() {
               width="80px"
               height="80px"
             />
-            <Navbar.Brand style={{ color: "#DFA420", fontSize: "48px", fontWeight: "bold" }} href="/">Dollars <span className="navSpan">and</span> Bills
+            <Navbar.Brand id="nav-title" href="/">Dollars <span className="navSpan">and</span> Bills
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-              <Navbar.Text style={{ color: "#DF20BA" }}>
+              <Navbar.Text id="sign-in" style={{ color: "#DF20BA" }}>
                 Signed in as: <a href="#login" id="navIn">{userName}</a>
               </Navbar.Text>
-              <Button href="/" onClick={() => Auth.logout()} onMouseEnter={() => setHoverLogOut(true)} onMouseLeave={() => setHoverLogOut(false)} style={hoverLogOut ? { border: "solid #DF20BA 2px", backgroundColor: "#DF20BA", color: "black" } : { border: "solid #DF20BA 2px", backgroundColor: "black", color: "#DFA420" }}>
+              <Button id="logout-btn" href="/" onClick={() => Auth.logout()} onMouseEnter={() => setHoverLogOut(true)} onMouseLeave={() => setHoverLogOut(false)} style={hoverLogOut ? { border: "solid #DF20BA 2px", backgroundColor: "#DF20BA", color: "black" } : { border: "solid #DF20BA 2px", backgroundColor: "black", color: "#DFA420" }}>
                 Logout
               </Button>
             </Navbar.Collapse>

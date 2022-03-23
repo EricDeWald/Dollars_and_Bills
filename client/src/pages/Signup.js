@@ -13,10 +13,12 @@ function Signup(props) {
     const togglePassword = () => setShowPassword(!showPassword);
 
     const [addUser] = useMutation(ADD_USER);
+    const [usernameError, setUsernameError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        if (formState.password === formState.password2) {
-            console.log("same same")
+        try {
             const mutationResponse = await addUser({
                 variables: {
                     email: formState.email,
@@ -24,13 +26,24 @@ function Signup(props) {
                     username: formState.username
                 },
             });
-
             const token = mutationResponse.data.addUser.token;
             const username = mutationResponse.data.addUser.user.username;
+            setUsernameError('');
+            setEmailError('');
+            setPasswordError('');
             Auth.login(token, username);
-        } else {
-            // <Alert variant='warning'>passwords need to match</Alert>
-            alert("passwords need to match")
+        } catch (err) {
+            if (!formState.username) {
+                setUsernameError('Unique username is required!')
+            }
+            if (!formState.email) {
+                setEmailError('Unique email is required!')
+            }
+            if (!formState.password) {
+                setPasswordError('Password is required!')
+            } else if (!formState.password.length < 8) {
+                setPasswordError('Password must be at least 8 characters in length!')
+            }
         }
     };
 
@@ -53,11 +66,13 @@ function Signup(props) {
                     <Form.Label className='log-text'>Username</Form.Label>
                     <Form.Control type="username" placeholder="Username" id="username" name="username" onChange={handleChange} />
                 </Form.Group>
+                <p style={{ color: "#DFA420" }}>{usernameError}</p>
 
                 <Form.Group className="mb-3 w-auto">
                     <Form.Label className='log-text'>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" id="email" name="email" onChange={handleChange} />
                 </Form.Group>
+                <p style={{ color: "#DFA420" }}>{emailError}</p>
 
                 <Form.Group className="mb-3 w-auto">
                     <Form.Label className='log-text'>Password</Form.Label>
@@ -69,6 +84,8 @@ function Signup(props) {
                     <Form.Control type={showPassword ? "text" : "password"} placeholder="Verify Password" name="password2" id="pwd2" onChange={handleChange} />
                     <FaEye style={{ color: "white" }} onClick={togglePassword}>Show Password</FaEye>
                 </Form.Group>
+                <p style={{ color: "#DFA420" }}>{passwordError}</p>
+
                 <Button className="w-auto" id='log-button' type="submit">
                     Submit
                 </Button>
