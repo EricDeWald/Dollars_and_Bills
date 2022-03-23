@@ -16,22 +16,28 @@ function Signup(props) {
     const [usernameError, setUsernameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [verifyPassError, setVerifyPassError] = useState('');
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+
         try {
-            const mutationResponse = await addUser({
-                variables: {
-                    email: formState.email,
-                    password: formState.password,
-                    username: formState.username
-                },
-            });
-            const token = mutationResponse.data.addUser.token;
-            const username = mutationResponse.data.addUser.user.username;
-            setUsernameError('');
-            setEmailError('');
-            setPasswordError('');
-            Auth.login(token, username);
+            if (formState.password === formState.password2) {
+                const mutationResponse = await addUser({
+                    variables: {
+                        email: formState.email,
+                        password: formState.password,
+                        username: formState.username
+                    },
+                });
+                const token = mutationResponse.data.addUser.token;
+                const username = mutationResponse.data.addUser.user.username;
+                setUsernameError('');
+                setEmailError('');
+                setPasswordError('');
+                Auth.login(token, username);
+            } else {
+                setVerifyPassError('Passwords must match!')
+            }
         } catch (err) {
             setUsernameError('');
             setEmailError('');
@@ -48,8 +54,8 @@ function Signup(props) {
                 setPasswordError('Password must be at least 8 characters in length!')
             }
         }
-    };
 
+    };
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormState({
@@ -81,13 +87,14 @@ function Signup(props) {
                     <Form.Label className='log-text'>Password</Form.Label>
                     <Form.Control type={showPassword ? "text" : "password"} placeholder="Password" name="password" id="pwd" onChange={handleChange} />
                 </Form.Group>
+                <p style={{ color: "#DFA420" }}>{passwordError}</p>
 
                 <Form.Group className="mb-3 w-auto">
                     <Form.Label className='log-text'>Verify Password</Form.Label>
                     <Form.Control type={showPassword ? "text" : "password"} placeholder="Verify Password" name="password2" id="pwd2" onChange={handleChange} />
                     <FaEye style={{ color: "white" }} onClick={togglePassword}>Show Password</FaEye>
                 </Form.Group>
-                <p style={{ color: "#DFA420" }}>{passwordError}</p>
+                <p style={{ color: "#DFA420" }}>{verifyPassError}</p>
 
                 <Button className="w-auto" id='log-button' type="submit">
                     Submit
