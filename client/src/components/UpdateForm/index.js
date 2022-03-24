@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { UPDATE_EXPENSE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { QUERY_EXPENSE } from '../../utils/queries';
 
 const UpdateForm = ({ expenseId }) => {
+    console.log(expenseId)
     const [expenseName, setExpenseName] = useState('');
     const [expenseAmount, setExpenseAmount] = useState();
     const [expenseDescription, setExpenseDescription] = useState('');
@@ -14,6 +16,7 @@ const UpdateForm = ({ expenseId }) => {
     const [descriptionError, setDescriptionError] = useState('');
     const [onUpShow, setOnUpShow] = useState(false);
     const [updateExpense, { error }] = useMutation(UPDATE_EXPENSE);
+    
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -70,7 +73,37 @@ const UpdateForm = ({ expenseId }) => {
             setExpenseDescription(value);
         }
     };
+    // try {
+    //     const { data } = await updateExpense({
+    //         variables: {
+    //             name: expenseName,
+    //             amount: parseInt(expenseAmount),
+    //             description: expenseDescription,
+    //             expenseId: expenseId
+    //         },
+    //     })
+    // };
 
+    const GetExpenseData = async() =>{
+        const { loading, error, data } = await useQuery(QUERY_EXPENSE)
+         if (loading){return "loading data . . ."}
+         if (data){console.log(data, "from getExpenseData")}
+         if (error){console.log(error)}
+    };
+    GetExpenseData();
+    
+    // variables: { _id: expenseId },
+    //    
+    //     console.log(data)
+    // }
+    // console.log(GetExpenseData())
+    // const preLoadData = () =>{
+    //     const preLoadValues = {
+    //         name: ev,
+    //         amount:,
+    //         description:,
+    //     }
+    // }
     return (
         <div>
             <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} onClick={() => setOnUpShow(!onUpShow)}>
@@ -86,7 +119,7 @@ const UpdateForm = ({ expenseId }) => {
                             <Modal.Body style={{ backgroundColor: "black", border: "solid 2px #DF20BA", borderRadius: "5px" }}>
                                 <textarea
                                     name="name"
-                                    placeholder="Name of expense"
+                                    placeholder={(expenseName ? expenseName : "Name of expense")}
                                     value={expenseName}
                                     className="form-input w-100"
                                     style={{ lineHeight: '1.5', resize: 'vertical' }}
