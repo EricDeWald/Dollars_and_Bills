@@ -49,11 +49,11 @@ function Signup(props) {
             if (!formState.email) {
                 setEmailError('Unique email is required!')
             }
-            if (!formState.password) {
-                setPasswordError('Password is required!')
-            } else if (!formState.password.length < 8) {
-                setPasswordError('Password must be at least 8 characters in length!')
-            }
+            // if (!formState.password) {
+            //     setPasswordError('Password is required!')
+            // } else if (!formState.password.length < 8) {
+            //     setPasswordError('Password must be at least 8 characters in length!')
+            // }
         }
 
     };
