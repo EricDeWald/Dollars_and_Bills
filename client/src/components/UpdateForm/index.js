@@ -86,7 +86,7 @@ const UpdateForm = ({ expenseId }) => {
                             <Modal.Body style={{ backgroundColor: "black", border: "solid 2px #DF20BA", borderRadius: "5px" }}>
                                 <textarea
                                     name="name"
-                                    placeholder="Name of expense"
+                                    placeholder={(expenseName) =>(expenseName? expenseName:"Name of expense")}
                                     value={expenseName}
                                     className="form-input w-100"
                                     style={{ lineHeight: '1.5', resize: 'vertical' }}
