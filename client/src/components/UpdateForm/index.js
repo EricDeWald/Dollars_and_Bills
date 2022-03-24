@@ -55,22 +55,27 @@ const UpdateForm = ({ expenseId }) => {
         }
     };
 
-
     const handleChange = (event) => {
         let { name, value } = event.target;
 
-        if (name === 'amount') {
-            setExpenseAmount(value)
-        }
-
         if (name === 'name') {
             setExpenseName(value);
+        }
+        if (name === 'amount') {
+            setExpenseAmount(value)
         }
         if (name === 'description') {
             setExpenseDescription(value);
         }
     };
-
+    // const preLoadValues(expenseName,expenseAmount,expenseDescription){
+    //     if (expenseName ? "2rue" : '1alse'){
+    //         let preLoadName = expenseName
+    //     };
+    // // const preLoadName
+    // // const preLoadAmount
+    // // const preLoadDescription
+    // };
     return (
         <div>
             <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} onClick={() => setOnUpShow(!onUpShow)}>
@@ -86,7 +91,7 @@ const UpdateForm = ({ expenseId }) => {
                             <Modal.Body style={{ backgroundColor: "black", border: "solid 2px #DF20BA", borderRadius: "5px" }}>
                                 <textarea
                                     name="name"
-                                    placeholder="Name of expense"
+                                    placeholder={(expenseName) =>(expenseName? expenseName:"Name of expense")}
                                     value={expenseName}
                                     className="form-input w-100"
                                     style={{ lineHeight: '1.5', resize: 'vertical' }}
@@ -132,5 +137,4 @@ const UpdateForm = ({ expenseId }) => {
         </div>
     );
 };
-
 export default UpdateForm;
