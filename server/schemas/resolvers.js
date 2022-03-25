@@ -66,7 +66,6 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         addExpense: async (parent, { name, amount, description, budgetId }, context) => {
-            console.log("hit addExpense resolver")
             if (context.user) {
                 const expense = await Expense.create({ name, amount, description });
 
@@ -103,14 +102,8 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         updateExpense: async (parent, { name, amount, description, expenseId }, context) => {
-            console.log("hit updateExpense resolver")
             if (context.user) {
                 const expense = await Expense.findOneAndUpdate({ _id: expenseId }, { name, amount, description });
-
-                // await Budget.findOneAndUpdate(
-                //     { _id: budgetId },
-                //     { $addToSet: { expenses: expense._id } }
-                // );
 
                 return expense;
             }
