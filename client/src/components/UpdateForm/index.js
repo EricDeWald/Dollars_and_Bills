@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { UPDATE_EXPENSE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import { QUERY_EXPENSE } from '../../utils/queries';
 
 const UpdateForm = ({ expenseId }) => {
     const [expenseName, setExpenseName] = useState('');
@@ -55,7 +56,7 @@ const UpdateForm = ({ expenseId }) => {
         }
     };
 
-
+   
     const handleChange = (event) => {
         let { name, value } = event.target;
 
@@ -73,7 +74,7 @@ const UpdateForm = ({ expenseId }) => {
 
     return (
         <div>
-            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} onClick={() => setOnUpShow(!onUpShow)}>
+            <Button style={{ border: "solid #DF20BA 2px", backgroundColor: "black" }} onClick={() => { setOnUpShow(!onUpShow)}}>
                 <div className='budget-btn'>Update Expense</div>
             </Button>
             {Auth.loggedIn() ? (
@@ -86,7 +87,7 @@ const UpdateForm = ({ expenseId }) => {
                             <Modal.Body style={{ backgroundColor: "black", border: "solid 2px #DF20BA", borderRadius: "5px" }}>
                                 <textarea
                                     name="name"
-                                    placeholder={(expenseName) =>(expenseName? expenseName:"Name of expense")}
+                                    placeholder="Name of expense"
                                     value={expenseName}
                                     className="form-input w-100"
                                     style={{ lineHeight: '1.5', resize: 'vertical' }}
