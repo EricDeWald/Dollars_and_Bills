@@ -72,7 +72,9 @@ export const QUERY_EXPENSE = gql`
             name
             amount
             description
-            userId
+            userId{
+              username
+            }
         }
     }
 `;
