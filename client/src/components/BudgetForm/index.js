@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { Modal, Button, Form } from 'react-bootstrap';
@@ -7,15 +7,11 @@ import { ADD_BUDGET } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 const BudgetForm = () => {
-    const [hoverAddBudget, setHoverAddBudget] = React.useState(false)
+    const [hoverAddBudget, setHoverAddBudget] = useState(false)
     const [budgetName, setBudgetName] = useState('');
     const [budgetAmount, setBudgetAmount] = useState();
-    // const [namePlaceholder, setNamePlaceholder] = useState('Name of Budget');
-    // const [amountPlaceholder, setAmountPlaceholder] = useState('Amount of Budget');
     const [nameError, setNameError] = useState('');
     const [amountError, setAmountError] = useState('');
-    // const [formErrors, setFormErrors] = useState({budgetName, budgetAmount});
-    // const [isSubmit, setIsSubbmit] = useState(false);
     const [onShow, setOnShow] = useState(false);
     const [addBudget, { error }] = useMutation(ADD_BUDGET);
     const handleFormSubmit = async (event) => {
@@ -27,8 +23,6 @@ const BudgetForm = () => {
                     amount: parseInt(budgetAmount)
                 },
             });
-            // setIsSubbmit(true);
-            // setFormErrors(validate({budgetName, budgetAmount}))
             setBudgetName('');
             setBudgetAmount('');
             setNameError('');
@@ -59,24 +53,6 @@ const BudgetForm = () => {
             setBudgetName(value);
         }
     };
-
-    // useEffect(() => {
-    //     console.log(formErrors);
-    //     if(Object.keys(formErrors).length === 0 && isSubmit) {
-    //         console.log(budgetName);
-    //         console.log(budgetAmount);
-    //     }
-    // }, [formErrors])
-    // const validate = (values) => {
-    //     const errors = {}
-    //     if (!values.budgetName) {
-    //         setNamePlaceholder('Budget name is required!');
-    //     }
-    //     if (!values.budgetAmount) {
-    //         errors.budgetAmount = 'Budget amount is required!'
-    //     }
-    //     return errors;
-    // }
 
     return (
         <div>

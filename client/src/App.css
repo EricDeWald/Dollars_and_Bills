@@ -47,7 +47,8 @@ html{
 
 #email:hover,
 #pwd:hover,
-#username:hover{
+#username:hover,
+#pwd2:hover{
   border:  var(--orange) 2px solid;
   background-color: var(--pink);
 }
