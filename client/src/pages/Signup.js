@@ -93,9 +93,8 @@ function Signup(props) {
                 <Form.Group className="mb-3 w-auto">
                     <Form.Label className='log-text'>Verify Password</Form.Label>
                     <Form.Control type={showPassword ? "text" : "password"} placeholder="Verify Password" name="password2" id="pwd2" onChange={handleChange} />
-                    <FaEye style={{ color: "white" }} onClick={togglePassword} arialabel="Show password"></FaEye>
-
-                </Form.Group>1
+                    <FaEye style={{ color: "white" }} onClick={togglePassword}>Show Password</FaEye>
+                </Form.Group>
                 <p style={{ color: "#DFA420" }}>{verifyPassError}</p>
 
                 <Button className="w-auto" id='log-button' type="submit">
