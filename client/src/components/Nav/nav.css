@@ -22,8 +22,18 @@
     font-weight: bold;
 }
 
+#nav-title2{
+    color: #DFA420;
+    font-size: 48px;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 768px) {
     #nav-title {
+        font-size: 20px;
+    }
+
+    #nav-title2 {
         font-size: 20px;
     }
 
@@ -32,6 +42,14 @@
     }
 
     #logout-btn{
+        font-size: 10px;
+    }
+
+    #login-btn{
+        font-size: 10px;
+    }
+
+    #signup-btn{
         font-size: 10px;
     }
 }
