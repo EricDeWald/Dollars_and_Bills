@@ -50,13 +50,13 @@ function Nav() {
               width="80px"
               height="80px"
             />
-            <Navbar.Brand style={{ color: "#DFA420", fontSize: "44px", fontWeight: "bold" }} href="/">Dollars <span className="navSpan">and</span> Bills</Navbar.Brand>
+            <Navbar.Brand id="nav-title2" href="/">Dollars <span className="navSpan">and</span> Bills</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-              <Button href="/signup" onMouseEnter={() => setHoverSignUp(true)} onMouseLeave={() => setHoverSignUp(false)} style={hoverSignUp ? { border: "solid #DF20BA 2px", backgroundColor: "#DF20BA", color: "black" } : { border: "solid #DF20BA 2px", backgroundColor: "black", color: "#DFA420" }}>
+              <Button id="signup-btn" href="/signup" onMouseEnter={() => setHoverSignUp(true)} onMouseLeave={() => setHoverSignUp(false)} style={hoverSignUp ? { border: "solid #DF20BA 2px", backgroundColor: "#DF20BA", color: "black" } : { border: "solid #DF20BA 2px", backgroundColor: "black", color: "#DFA420" }}>
                 Signup
               </Button>
-              <Button href="/login" onMouseEnter={() => setHoverLogin(true)} onMouseLeave={() => setHoverLogin(false)} style={hoverLogin ? { marginLeft: "8px", border: "solid #DF20BA 2px", backgroundColor: "#DF20BA", color: "black" } : { marginLeft: "8px", border: "solid #DF20BA 2px", backgroundColor: "black", color: "#DFA420" }}>
+              <Button id="login-btn" href="/login" onMouseEnter={() => setHoverLogin(true)} onMouseLeave={() => setHoverLogin(false)} style={hoverLogin ? { marginLeft: "8px", border: "solid #DF20BA 2px", backgroundColor: "#DF20BA", color: "black" } : { marginLeft: "8px", border: "solid #DF20BA 2px", backgroundColor: "black", color: "#DFA420" }}>
                 Login
               </Button>
             </Navbar.Collapse>
