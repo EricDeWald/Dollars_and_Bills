@@ -47,7 +47,7 @@ export default function BudgetCard({ budgets }, now) {
                                 <Card.Title className='d-flex justify-content-between align-items-baseline fw-normal mb-3'>
                                     <div className='me-2'>{budget.name}</div>
                                     <div className='d-flex align-items-baseline'>${budget.expenses.map(item => item.amount).reduce((prev, curr) => prev + curr, 0)}
-                                        <span className='text-muted fs-6 ms-1'>
+                                        <span className={budget.expenses.map(item => item.amount).reduce((prev, curr) => prev + curr, 0 ) < budget.amount ? 'newColor fs-6 ms-1' : "errColor fs-6 ms-1"}>
                                             / ${budget.amount}
                                         </span>
                                     </div>
