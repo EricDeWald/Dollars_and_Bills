@@ -25,6 +25,10 @@ const userSchema = new Schema({
             ref: 'Budget',
         },
     ],
+    isSubscribed: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 userSchema.pre('save', async function (next) {
