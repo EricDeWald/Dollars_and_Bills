@@ -109,6 +109,15 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
+
+        //could not remember how to use context.user, will update. Also can use aggragate $not instead of $eq
+        //need to add authentication error when passing context as well.
+        updateSubscription: async (parent, { userId }, context) => {
+            if (userId) {
+                const user = await User.findOneAndUpdate({ _id: userId }, [{ $set: { isSubscribed: { $eq: [false, "$isSubscribed"] } } }]);
+                return user;
+            }
+        }
     },
 };
 
